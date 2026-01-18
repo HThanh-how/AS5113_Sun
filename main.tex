@@ -1,4 +1,4 @@
-\documentclass[13pt,a4paper]{article}
+\documentclass[14pt,a4paper]{extarticle}
 
 % Packages
 \usepackage{geometry}
@@ -28,6 +28,10 @@
 \setsansfont{TeX Gyre Heros}
 \setmonofont{TeX Gyre Cursor}
 
+% Set font size to 13pt (base 14pt from extarticle, then override normalsize)
+\renewcommand{\normalsize}{\fontsize{13pt}{15.6pt}\selectfont}
+\normalsize
+
 % Paragraph formatting per regulations
 \setlength{\parindent}{1cm}
 \setlength{\parskip}{6pt}
@@ -36,7 +40,7 @@
 % Section formatting
 \titleformat{\section}
   {\centering\normalfont\fontsize{14}{17}\bfseries\MakeUppercase}
-  {}{0em}{}
+  {CHƯƠNG \thesection.\ }{0em}{}
 \titlespacing*{\section}{0pt}{12pt}{6pt}
 
 \titleformat{\subsection}

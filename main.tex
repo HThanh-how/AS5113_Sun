@@ -1,0 +1,115 @@
+\documentclass[13pt,a4paper]{article}
+
+% Packages
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ left=3cm,
+ right=2cm,
+ top=2cm,
+ bottom=2cm,
+}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{setspace} % For line spacing
+\usepackage{indentfirst} % Indent first paragraph
+
+% Formatting
+\setmainfont{Times New Roman}[Scale=1.0]
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+\linespread{1.3} % 1.3 Line spacing (approx 1.5 word spacing)
+\setlength{\parskip}{6pt} % Space between paragraphs
+
+% Section formatting (mimic Chapters)
+\titleformat{\section}
+  {\centering\normalfont\fontsize{16}{19}\bfseries}
+  {CHƯƠNG \thesection}{1em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{0pt}{30pt}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{17}\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    {\large \textbf{ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH}} \\
+    {\large \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA}}
+    
+    \vspace{1.5cm}
+    
+    {\Huge \textbf{BÁO CÁO BÀI TẬP LỚN}}
+    
+    \vspace{0.5cm}
+    
+    {\huge \textbf{MÔN: TRIẾT HỌC (AS5113)}}
+    
+    \vspace{0.5cm}
+    
+    {\large \textbf{Lớp: CH03 -- Học kỳ: SDH\_HK252}}
+    
+    \vspace{1.5cm}
+    
+    {\Large \textbf{ĐỀ TÀI:}}
+    
+    {\huge \textbf{\MakeUppercase{Chủ nghĩa khắc kỉ}}}
+    \vspace{0.2cm}
+    {\Large \textit{(Stoicism)}}
+    
+    \vspace{1.5cm}
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{r l}
+            \textbf{GVHD:} & \textbf{TS. NGUYỄN THỊ MINH HƯƠNG} \\
+            \textbf{Nhóm thực hiện:} & \textbf{Nhóm 7}
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.5cm}
+    
+    \begin{tabular}{|c|l|c|}
+        \hline
+        \textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} \\
+        \hline
+        1 & Nguyễn Thế Dân (Nhóm trưởng) & 2470158 \\
+        \hline
+        2 & Nguyễn Tấn Phát & 2570289 \\
+        \hline
+        3 & Huỳnh Thị Như Quỳnh & 2570311 \\
+        \hline
+        4 & Phan Đức Minh & 2570254 \\
+        \hline
+        5 & Nguyễn Chí Thành & 2570324 \\
+        \hline
+        6 & Phạm Huy Thanh & 2570317 \\
+        \hline
+    \end{tabular}
+    
+    \vfill
+    
+    {\large TP. Hồ Chí Minh, \today}
+    
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\include{chapters/01_introduction}
+\include{chapters/02_history}
+\include{chapters/03_philosophy}
+\include{chapters/04_practices}
+\include{chapters/05_conclusion}
+
+
+\end{document}

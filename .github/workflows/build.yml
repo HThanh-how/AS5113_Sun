@@ -1,4 +1,4 @@
-name: Build LaTeX PDF - Milestone 3
+name: Build LaTeX PDF - AS5113 Triet Hoc
 
 on:
   push:
@@ -26,28 +26,23 @@ jobs:
           root_file: main.tex
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
-          # Removed tlmgr update as it is causing network errors. 
-          # The 'texlive-full' image should already contain these packages.
-          # pre_compile: |
-          #   tlmgr update --self
-          #   tlmgr install biblatex biber biblatex-ieee csquotes siunitx circuitikz lm pgfplots babel-english babel-vietnamese fontspec listings ucharclasses xecjk
 
       - name: Publish PDF to project root
         run: |
-          cp main.pdf Milestone_3_Report.pdf
+          cp main.pdf AS5113_Nhom7_ChuNghiaKhacKi.pdf
           ls -la
 
       - name: Upload artifact (PDF)
         uses: actions/upload-artifact@v4
         with:
-          name: milestone3-report-pdf
-          path: Milestone_3_Report.pdf
+          name: as5113-triet-hoc-pdf
+          path: AS5113_Nhom7_ChuNghiaKhacKi.pdf
 
       - name: Upload logs (always)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: milestone2-report-logs
+          name: latex-build-logs
           path: |
             main.log
             main.aux
@@ -69,7 +64,6 @@ jobs:
         run: |
           set -euo pipefail
           
-          # Tìm tag/release gần nhất (debug info ra stderr, không vào file)
           LAST_TAG=""
           if git describe --tags --abbrev=0 >/dev/null 2>&1; then
             LAST_TAG=$(git describe --tags --abbrev=0)
@@ -78,18 +72,14 @@ jobs:
             echo "No tags found, will include all commits" >&2
           fi
           
-          # Tạo file changelog với format đẹp giống GitHub Releases
           {
             echo "## Changelog ($(date -u +"%Y-%m-%d %H:%M:%S") UTC)"
             echo ""
             
-            # Lấy commit từ tag gần nhất đến HEAD (nếu có tag)
-            # Nếu không có tag, lấy tất cả commit
             if [ -n "$LAST_TAG" ]; then
               COMMIT_RANGE="${LAST_TAG}..HEAD"
               echo "Getting commits from ${LAST_TAG} to HEAD" >&2
               
-              # Kiểm tra xem có commit nào không
               if git log "${COMMIT_RANGE}" --oneline 2>/dev/null | head -1 >/dev/null 2>&1; then
                 git log "${COMMIT_RANGE}" --no-merges --pretty=format:"*   **%s** (%h)"
               else
@@ -103,7 +93,6 @@ jobs:
             
           } > release_notes.md
           
-          # Fallback cuối cùng nếu file rỗng
           if [ ! -s release_notes.md ] || ! grep -q "^\*" release_notes.md; then
             {
               echo "## Changelog ($(date -u +"%Y-%m-%d %H:%M:%S") UTC)"
@@ -114,7 +103,6 @@ jobs:
             } > release_notes.md
           fi
           
-          # Hiển thị preview
           echo "=== Changelog Preview (first 50 lines) ==="
           head -50 release_notes.md
           echo ""
@@ -124,13 +112,13 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: milestone3-report-pdf
+          name: as5113-triet-hoc-pdf
           path: dist
       
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Milestone 3 (Build ${{ github.run_number }})
+          name: AS5113 Nhom 7 - Chu Nghia Khac Ki (Build ${{ github.run_number }})
           body_path: release_notes.md
-          files: dist/Milestone_3_Report.pdf
+          files: dist/AS5113_Nhom7_ChuNghiaKhacKi.pdf

@@ -26,10 +26,11 @@ jobs:
           root_file: main.tex
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
-          # Added languages and fonts for Vietnamese support
-          pre_compile: |
-            tlmgr update --self
-            tlmgr install biblatex biber biblatex-ieee csquotes siunitx circuitikz lm pgfplots babel-english babel-vietnamese fontspec listings ucharclasses xecjk
+          # Removed tlmgr update as it is causing network errors. 
+          # The 'texlive-full' image should already contain these packages.
+          # pre_compile: |
+          #   tlmgr update --self
+          #   tlmgr install biblatex biber biblatex-ieee csquotes siunitx circuitikz lm pgfplots babel-english babel-vietnamese fontspec listings ucharclasses xecjk
 
       - name: Publish PDF to project root
         run: |

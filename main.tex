@@ -17,18 +17,24 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{titlesec}
-\usepackage{setspace} % For line spacing
-\usepackage{indentfirst} % Indent first paragraph
+\usepackage{setspace}
+\usepackage{indentfirst}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage{tocloft}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Define colors
+\definecolor{bkblue}{RGB}{0,102,153}
 
 % Formatting - Use TeX Gyre Termes (Linux-compatible Times New Roman clone)
 \setmainfont{TeX Gyre Termes}
 \setsansfont{TeX Gyre Heros}
 \setmonofont{TeX Gyre Cursor}
 
-% Set font size to 13pt (base 14pt from extarticle, then override normalsize)
+% Set font size to 13pt
 \renewcommand{\normalsize}{\fontsize{13pt}{15.6pt}\selectfont}
 \normalsize
 
@@ -59,78 +65,273 @@
 
 \begin{document}
 
-% ============ TRANG BÌA ============
+% ============ TRANG BÌA (THEO MẪU CHÍNH THỨC) ============
 \begin{titlepage}
+    \newgeometry{left=1.5cm, right=1.5cm, top=1cm, bottom=1cm}
+    
+    % Khung viền xanh kép
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[bkblue, line width=2pt] 
+            ([shift={(0.8cm,-0.8cm)}]current page.north west) 
+            rectangle 
+            ([shift={(-0.8cm,0.8cm)}]current page.south east);
+        \draw[bkblue, line width=0.5pt] 
+            ([shift={(1cm,-1cm)}]current page.north west) 
+            rectangle 
+            ([shift={(-1cm,1cm)}]current page.south east);
+    \end{tikzpicture}
+    
     \centering
     
-    {\fontsize{13}{16}\selectfont \textbf{ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH}} \\
-    {\fontsize{13}{16}\selectfont \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA}} \\
-    {\fontsize{13}{16}\selectfont \textbf{KHOA KHOA HỌC ỨNG DỤNG}} \\
-    {\fontsize{13}{16}\selectfont \textbf{BỘ MÔN LÝ LUẬN CHÍNH TRỊ}}
+    \vspace*{0.5cm}
     
-    \vspace{2cm}
+    % Tên trường
+    {\fontsize{14}{17}\selectfont \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA}}
     
-    {\fontsize{16}{20}\selectfont \textbf{BÀI TIỂU LUẬN}}
+    \vspace{0.2cm}
     
-    \vspace{0.5cm}
-    
-    {\fontsize{14}{17}\selectfont \textbf{HỌC PHẦN: TRIẾT HỌC (AS5113)}}
-    
-    \vspace{1.5cm}
-    
-    {\fontsize{14}{17}\selectfont \textbf{ĐỀ TÀI:}}
+    {\fontsize{14}{17}\selectfont \textbf{ĐẠI HỌC QUỐC GIA – THÀNH PHỐ HỒ CHÍ MINH}}
     
     \vspace{0.3cm}
     
-    {\fontsize{16}{20}\selectfont \textbf{LỊCH SỬ TRIẾT HỌC PHƯƠNG TÂY:}}
+    % Decorative symbol
+    {\color{bkblue} $\infty \cdots \diamond \cdots \infty$}
     
-    {\fontsize{16}{20}\selectfont \textbf{CHỦ NGHĨA KHẮC KỈ VÀ VAI TRÒ CỦA NÓ}}
+    \vspace{0.8cm}
     
-    {\fontsize{16}{20}\selectfont \textbf{ĐỐI VỚI ĐỜI SỐNG XÃ HỘI}}
+    % Logo BK (sử dụng file thật)
+    \includegraphics[height=2.5cm]{images/logo_bk.png}
     
-    \vspace{2cm}
+    \vspace{1cm}
     
-    \begin{flushleft}
-    \hspace{6cm}
-    \begin{tabular}{l l}
-        \textbf{GVHD:} & \textbf{TS. NGUYỄN THỊ MINH HƯƠNG} \\
-        \textbf{Lớp:} & \textbf{CH03 -- HK252} \\
-        \textbf{Nhóm:} & \textbf{Nhóm 7}
-    \end{tabular}
-    \end{flushleft}
+    % Tiêu đề bài tiểu luận
+    {\fontsize{14}{17}\selectfont \textbf{BÀI TIỂU LUẬN TRIẾT HỌC (MM: AS 5113)}}
     
-    \vspace{0.5cm}
+    \vspace{0.3cm}
     
-    \begin{flushleft}
-    \hspace{6cm}
-    \textbf{Thành viên nhóm:}
-    \end{flushleft}
+    {\fontsize{14}{17}\selectfont \color{bkblue} \textbf{ĐỀ TÀI:}}
     
+    \vspace{0.2cm}
+    
+    {\fontsize{14}{17}\selectfont \textbf{LỊCH SỬ TRIẾT HỌC PHƯƠNG TÂY: CHỦ NGHĨA KHẮC KỈ}}
+    
+    {\fontsize{14}{17}\selectfont \textbf{VÀ VAI TRÒ CỦA NÓ ĐỐI VỚI ĐỜI SỐNG XÃ HỘI}}
+    
+    \vspace{1.2cm}
+    
+    % Thông tin lớp, nhóm
+    {\fontsize{13}{16}\selectfont \textbf{LỚP} \underline{\hspace{1cm}CH03\hspace{1cm}} \textbf{NHÓM} \underline{\hspace{1cm}7\hspace{1cm}} \textbf{HK 252}}
+    
+    \vspace{0.3cm}
+    
+    {\fontsize{13}{16}\selectfont \textbf{NGÀY NỘP} \underline{\hspace{4cm}}}
+    
+    \vspace{0.3cm}
+    
+    {\fontsize{13}{16}\selectfont \textbf{Giảng viên hướng dẫn:} \underline{\hspace{0.3cm}TS. NGUYỄN THỊ MINH HƯƠNG\hspace{0.3cm}}}
+    
+    \vspace{0.8cm}
+    
+    % Bảng thành viên nhóm (6 cột theo mẫu)
     \begin{center}
-    \begin{tabular}{|c|l|c|}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|c|l|c|c|c|c|}
         \hline
-        \textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} \\
+        \textbf{Stt} & \textbf{Học viên thực hiện} & \textbf{ID} & \textbf{Xếp loại} & \textbf{Nhiệm vụ} & \textbf{Điểm} \\
+        & & & \textbf{(... \%)} & & \textbf{số} \\
         \hline
-        1 & Nguyễn Thế Dân (Nhóm trưởng) & 2470158 \\
+        1 & Nguyễn Thế Dân & 2470158 & & & \\
         \hline
-        2 & Nguyễn Tấn Phát & 2570289 \\
+        2 & Nguyễn Tấn Phát & 2570289 & & & \\
         \hline
-        3 & Huỳnh Thị Như Quỳnh & 2570311 \\
+        3 & Huỳnh Thị Như Quỳnh & 2570311 & & & \\
         \hline
-        4 & Phan Đức Minh & 2570254 \\
+        4 & Phan Đức Minh & 2570254 & & & \\
         \hline
-        5 & Nguyễn Chí Thành & 2570324 \\
+        5 & Nguyễn Chí Thành & 2570324 & & & \\
         \hline
-        6 & Phạm Huy Thanh & 2570317 \\
+        6 & Phạm Huy Thanh & 2570317 & & & \\
         \hline
     \end{tabular}
     \end{center}
     
     \vfill
     
-    {\fontsize{13}{16}\selectfont \textbf{TP. Hồ Chí Minh, tháng 01 năm 2026}}
+    % Footer
+    {\fontsize{13}{16}\selectfont \textit{Thành phố Hồ Chí Minh – 2026}}
     
+    \vspace{0.5cm}
+    
+    \restoregeometry
 \end{titlepage}
+
+% ============ MẪU 02: BÁO CÁO KẾT QUẢ LÀM VIỆC NHÓM ============
+\newpage
+\thispagestyle{empty}
+
+\begin{flushleft}
+{\fontsize{11}{13}\selectfont \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA}} \hfill {\fontsize{11}{13}\selectfont \textbf{Mẫu 02}}\\
+{\fontsize{10}{12}\selectfont KHOA KHOA HỌC ỨNG DỤNG}\\
+{\fontsize{10}{12}\selectfont \textbf{BỘ MÔN LÝ LUẬN CHÍNH TRỊ}}
+\end{flushleft}
+
+\vspace{0.5cm}
+
+\begin{center}
+{\fontsize{13}{16}\selectfont \textbf{BÁO CÁO KẾT QUẢ LÀM VIỆC NHÓM VÀ BẢNG ĐIỂM BÀI TIỂU LUẬN}}\\
+\vspace{0.2cm}
+{\fontsize{11}{13}\selectfont Học phần: \textbf{TRIẾT HỌC (SDH)} \textit{(MSMH: AS 5113)}}
+\end{center}
+
+\vspace{0.3cm}
+
+{\fontsize{11}{13}\selectfont 
+\hspace{1cm}Lớp: \underline{\hspace{1cm}CH03\hspace{1cm}} Tên nhóm: \underline{\hspace{1cm}Nhóm 7\hspace{1cm}} HK: \underline{\hspace{0.5cm}252\hspace{0.5cm}} Năm học: \underline{\hspace{1cm}2025-2026\hspace{1cm}}
+}
+
+\vspace{0.3cm}
+
+{\fontsize{11}{13}\selectfont 
+Đề tài: \underline{\hspace{0.3cm}Lịch sử triết học phương Tây: Chủ nghĩa khắc kỉ và vai trò của nó đối với đời sống xã hội\hspace{0.3cm}}
+}
+
+\vspace{0.5cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\fontsize{10}{12}\selectfont
+\begin{tabular}{|c|c|p{2cm}|p{2cm}|p{4.5cm}|c|c|c|}
+    \hline
+    \textbf{STT} & \textbf{Mã số HV} & \textbf{Họ} & \textbf{Tên} & \textbf{Nhiệm vụ được phân công} & \textbf{Nhóm} & \textbf{Điểm} & \textbf{Ký tên} \\
+    & & & & & \textbf{đánh giá} & \textbf{(GV} & \textbf{(Học} \\
+    & & & & & & \textbf{chấm)} & \textbf{viên)} \\
+    \hline
+    1 & 2470158 & Nguyễn Thế & Dân & & & & \\
+    \hline
+    2 & 2570289 & Nguyễn Tấn & Phát & & & & \\
+    \hline
+    3 & 2570311 & Huỳnh Thị Như & Quỳnh & & & & \\
+    \hline
+    4 & 2570254 & Phan Đức & Minh & & & & \\
+    \hline
+    5 & 2570324 & Nguyễn Chí & Thành & & & & \\
+    \hline
+    6 & 2570317 & Phạm Huy & Thanh & & & & \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+{\fontsize{10}{12}\selectfont 
+Họ và tên nhóm trưởng: \underline{\hspace{0.3cm}Nguyễn Thế Dân\hspace{0.3cm}}, Số ĐT: \underline{\hspace{2cm}}, Email: \underline{\hspace{3cm}}
+}
+
+\vspace{0.3cm}
+
+{\fontsize{10}{12}\selectfont 
+Nhận xét của GV: \dotfill
+}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tabular}{p{7cm} p{7cm}}
+    \centering \textbf{GIẢNG VIÊN} & \centering \textbf{NHÓM TRƯỞNG} \\
+    \centering \textit{(Ký và ghi rõ họ, tên)} & \centering \textit{(Ký và ghi rõ họ, tên)} \\
+    & \\
+    & \\
+    \centering TS. Nguyễn Thị Minh Hương & \centering Nguyễn Thế Dân \\
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+{\fontsize{8}{10}\selectfont \textit{
+HV in 01 tờ rời và nộp báo cáo cho GV khi nộp BTL; GV đánh giá, chấm điểm \& nộp báo cáo về Bộ môn\\
+Nhóm điền vào tất cả các cột, trừ cột số 7 (Điểm GV chấm): Thầy/ Cô sẽ điền\\
+Cột 6: Nhóm tự đánh giá các thành viên theo loại tốt (T), khá (K), trung bình (TB), Yếu (Y) hoặc theo \% (100\%, 75\%, 50\%, 25\%, 0\%)
+}}
+
+% ============ MẪU 01: BẢNG ĐIỂM KHÁC 20% ============
+\newpage
+\thispagestyle{empty}
+
+\begin{flushright}
+{\fontsize{12}{14}\selectfont \textbf{Mẫu 01}}
+\end{flushright}
+
+\begin{center}
+{\fontsize{13}{16}\selectfont \textbf{BẢNG ĐIỂM KHÁC (chiếm 20\% điểm học phần)}}\\
+\vspace{0.2cm}
+{\fontsize{12}{14}\selectfont \textbf{HỌC PHẦN: TRIẾT HỌC MM: AS 5113}}
+\end{center}
+
+\vspace{0.5cm}
+
+{\fontsize{11}{13}\selectfont 
+\textbf{Lớp:} \underline{\hspace{1cm}CH03\hspace{1cm}} \hspace{1cm} \textbf{Nhóm:} \underline{\hspace{1cm}7\hspace{1cm}} \hspace{1cm} \textbf{Học kỳ:} \underline{\hspace{1cm}252\hspace{1cm}}
+}
+
+\vspace{0.3cm}
+
+{\fontsize{11}{13}\selectfont 
+\textbf{Nhóm trưởng:} \underline{\hspace{0.3cm}Nguyễn Thế Dân\hspace{0.3cm}} \hspace{0.5cm} \textbf{Số di động:} \underline{\hspace{2cm}} \hspace{0.5cm} \textbf{Email:} \underline{\hspace{3cm}}
+}
+
+\vspace{0.5cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\fontsize{10}{12}\selectfont
+\begin{tabular}{|c|c|p{3cm}|p{1.5cm}|c|c|c|c|}
+    \hline
+    \textbf{Stt} & \textbf{ID} & \textbf{Họ và lót} & \textbf{Tên} & \textbf{Bài tập quá} & \textbf{Xây dựng bài,} & \textbf{Tổng} & \textbf{Ký tên} \\
+    & & & & \textbf{trình trên BK\_} & \textbf{Chuyên cần} & \textbf{Khác} & \\
+    & & & & \textbf{LMS} & & \textbf{20\%} & \\
+    & & & & \textbf{(5,0 đ)} & \textbf{(5,0đ)} & & \\
+    \textbf{(1)} & \textbf{(2)} & \textbf{(3)} & \textbf{(4)} & \textbf{(5)} & \textbf{(6)} & \textbf{(7)} & \textbf{(8)} \\
+    \hline
+    1 & 2470158 & Nguyễn Thế & Dân & & & & \\
+    \hline
+    2 & 2570289 & Nguyễn Tấn & Phát & & & & \\
+    \hline
+    3 & 2570311 & Huỳnh Thị Như & Quỳnh & & & & \\
+    \hline
+    4 & 2570254 & Phan Đức & Minh & & & & \\
+    \hline
+    5 & 2570324 & Nguyễn Chí & Thành & & & & \\
+    \hline
+    6 & 2570317 & Phạm Huy & Thanh & & & & \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+{\fontsize{9}{11}\selectfont 
+\textit{Ghi chú:} Bảng điểm này có 06 học viên\\
+Cột 5: Làm các bài tập theo quy định của giảng viên trên trang BK\_LMS.\\
+Cột 6: Đi học đầy đủ, xây dựng bài tích cực và thực hiện được các yêu cầu của buổi học. Vắng 1 buổi học trừ 1 điểm, vắng 05 buổi cấm thi.\\
+Cột 7 = (5) + (6)
+}
+
+\vspace{1cm}
+
+\begin{flushright}
+{\fontsize{11}{13}\selectfont 
+\textit{Ngày} \underline{\hspace{1cm}} \textit{tháng} \underline{\hspace{1cm}} \textit{năm} \underline{\hspace{1.5cm}}
+}
+
+\vspace{0.5cm}
+
+{\fontsize{11}{13}\selectfont \textbf{Nhóm trưởng}}\\
+{\fontsize{10}{12}\selectfont \textit{(Họ tên và chữ ký)}}
+
+\vspace{1.5cm}
+
+{\fontsize{11}{13}\selectfont Nguyễn Thế Dân}
+\end{flushright}
 
 % ============ DANH MỤC VIẾT TẮT ============
 \newpage

@@ -19,6 +19,10 @@
 \usepackage{tikz}
 \usepackage{pdflscape}
 
+% Footnote settings - reset per page
+\usepackage{perpage}
+\MakePerPage{footnote}
+
 % Define colors
 \definecolor{bkblue}{RGB}{0,102,153}
 
@@ -111,7 +115,7 @@
     
     \vspace{0.2cm}
     
-    {\fontsize{14}{17}\selectfont \textbf{LỊCH SỬ TRIẾT HỌC PHƯƠNG TÂY: CHỦ NGHĨA KHẮC KỈ}}
+    {\fontsize{14}{17}\selectfont \textbf{LỊCH SỬ TRIẾT HỌC PHƯƠNG TÂY: CHỦ NGHĨA KHẮC KỶ}}
     
     {\fontsize{14}{17}\selectfont \textbf{VÀ VAI TRÒ CỦA NÓ ĐỐI VỚI ĐỜI SỐNG XÃ HỘI}}
     
@@ -158,8 +162,8 @@
 
 % ============ MẪU 02: BÁO CÁO KẾT QUẢ LÀM VIỆC NHÓM ============
 \newpage
-\thispagestyle{empty}
 \newgeometry{left=2cm, right=2cm, top=1.5cm, bottom=1.5cm, landscape}
+\pagestyle{fancy}
 
 \begin{landscape}
 
@@ -181,7 +185,7 @@ KHOA KHOA HỌC ỨNG DỤNG\\
 
 \vspace{0.3cm}
 
-Đề tài: Lịch sử triết học phương Tây: Chủ nghĩa khắc kỉ và vai trò của nó đối với đời sống xã hội
+Đề tài: Lịch sử triết học phương Tây: Chủ nghĩa khắc kỷ và vai trò của nó đối với đời sống xã hội
 
 \vspace{0.5cm}
 
@@ -201,7 +205,7 @@ KHOA KHOA HỌC ỨNG DỤNG\\
     \hline
     5 & 2570324 & Nguyễn Chí & Thành & Tổng hợp, chỉnh sửa & 100\% & & \\
     \hline
-    6 & 2570317 & Phạm Huy & Thanh & Tài liệu tham khảo & 100\% & & \\
+    6 & 2570317 & Phạm Huy & Thanh & Trình bày, định dạng LaTeX, TLTK & 100\% & & \\
     \hline
 \end{tabularx}
 \end{center}
@@ -242,8 +246,8 @@ Cột 6: Nhóm tự đánh giá các thành viên theo loại tốt (T), khá (K
 
 % ============ MẪU 01: BẢNG ĐIỂM KHÁC 20% ============
 \newpage
-\thispagestyle{empty}
 \newgeometry{left=2cm, right=2cm, top=1.5cm, bottom=1.5cm, landscape}
+\pagestyle{fancy}
 
 \begin{landscape}
 
@@ -321,7 +325,7 @@ Nhóm trưởng: \underline{\hspace{0.3cm}Nguyễn Thế Dân\hspace{0.3cm}} S�
 \addcontentsline{toc}{section}{DANH MỤC CÁC TỪ VIẾT TẮT}
 
 \begin{tabular}{l l}
-    \textbf{CNKK} & Chủ nghĩa khắc kỉ \\
+    \textbf{CNKK} & Chủ nghĩa khắc kỷ \\
     \textbf{TCN} & Trước Công nguyên \\
     \textbf{CN} & Công nguyên \\
     \textbf{Nxb} & Nhà xuất bản \\

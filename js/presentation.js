@@ -125,7 +125,7 @@ function togglePresentation() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
     if (e.key === 'ArrowLeft') prevSlide();
-    if (e.key === 'f' || e.key === 'F') togglePresentation();
+    if (e.key === 'f' || e.key === 'F' || e.key === 'p' || e.key === 'P') togglePresentation();
 });
 
 // Init

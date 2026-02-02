@@ -1,319 +1,274 @@
-/* Main Styles */
+/* =========================================
+   CORE STYLES
+   ========================================= */
 :root {
-    --primary-color: #006699;
-    /* BK Blue */
-    --primary-dark: #004d73;
-    --accent-color: #00a8e8;
-    --text-color: #334155;
-    --text-light: #64748b;
-    --bg-body: #1a1a1a;
-    /* Dark Gray Background */
-    --slide-bg: #ffffff;
-    --slide-width: 1280px;
-    --slide-height: 720px;
+    --primary: #006699;
+    --secondary: #00a8e8;
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #f59e0b;
+    --slide-w: 1280px;
+    --slide-h: 720px;
+}
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #006699 0%, #00a8e8 100%);
-    --gradient-glow: radial-gradient(circle at center, rgba(0, 168, 232, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+* {
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
-    background-color: var(--bg-body);
-    /* User requested dark gray background */
-    background-image: radial-gradient(circle at 50% 50%, #2d2d2d 0%, #1a1a1a 100%);
-    color: var(--text-color);
+    background-color: #000;
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    color: var(--text-main);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-/* Slide Container */
+/* =========================================
+   SLIDE CONTAINER
+   ========================================= */
 .slide-container {
-    width: var(--slide-width);
-    height: var(--slide-height);
-    background: var(--slide-bg);
+    width: var(--slide-w);
+    height: var(--slide-h);
+    background: var(--card-bg);
+    margin-bottom: 80px;
+    /* Separated slides */
     position: relative;
     overflow: hidden;
-    /* Premium Shadow */
-    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
     border-radius: 16px;
-    /* Smooth corners */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     padding: 50px 70px;
-    /* More breathing room */
-    box-sizing: border-box;
+    flex-shrink: 0;
     transition: transform 0.3s ease;
-
-    /* Subtle border for contrast against dark bg */
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Watermark/Background Decoration */
-.slide-container::before {
-    content: '';
+/* Background Blobs */
+.slide-bg-deco {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: var(--gradient-glow);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
-/* Headers */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
 h1,
 h2,
 h3 {
-    margin-top: 0;
-    position: relative;
+    margin: 0;
     z-index: 1;
+    position: relative;
 }
 
 h1 {
     font-family: 'Urbanist', sans-serif;
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 0.3em;
-
-    /* Gradient Text */
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 10px 20px rgba(0, 168, 232, 0.2);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -2px;
 }
 
 h2 {
-    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.8em;
+    color: var(--secondary);
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 15px;
-    border-bottom: 4px solid var(--accent-color);
     display: inline-block;
 }
 
 h3 {
     font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--primary-dark);
-    margin-bottom: 0.6em;
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-/* Content */
-.content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+p,
+li,
+div {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #cbd5e1;
     z-index: 1;
+    position: relative;
 }
 
 ul {
-    font-size: 1.6rem;
-    line-height: 1.6;
     padding-left: 1.2em;
-    color: #475569;
 }
 
 li {
     margin-bottom: 0.6em;
-    padding-left: 10px;
 }
 
-/* Custom Bullet Points */
 li::marker {
-    color: var(--accent-color);
-    font-size: 1.2em;
+    color: var(--secondary);
 }
 
-.highlight {
-    color: var(--primary-color);
-    font-weight: 700;
-    background: linear-gradient(120deg, rgba(0, 168, 232, 0.1) 0%, rgba(0, 168, 232, 0) 100%);
-    padding: 0 5px;
-    border-radius: 4px;
+strong {
+    color: white;
+    font-weight: 600;
 }
 
-/* Modern Card/Box Style */
-.box-glow {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 168, 232, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 102, 153, 0.08);
-    /* Softer shadow */
-    padding: 30px;
+/* =========================================
+   COMPONENTS
+   ========================================= */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s;
 }
 
-.box-glow:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 102, 153, 0.15);
+.card:hover {
+    border-color: var(--secondary);
 }
 
-/* Presentation Mode Overrides */
-.presentation-mode body {
-    background: black !important;
+.image-placeholder {
+    width: 100%;
+    height: 250px;
+    border: 2px dashed var(--text-muted);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+.footer {
+    position: absolute;
+    bottom: 25px;
+    left: 70px;
+    right: 70px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+/* =========================================
+   PRESENTATION MODE
+   ========================================= */
+body.presentation-mode {
+    padding: 0;
+    overflow: hidden;
+    background: black;
 }
 
 .presentation-mode .slide-container {
     display: none;
+    margin: 0;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(var(--slide-scale, 1));
-    transform-origin: center center;
-    margin: 0 !important;
+    transform: translate(-50%, -50%) scale(var(--scale, 1));
     border-radius: 0;
-    /* Remove radius in fullscreen for immersive feel */
     box-shadow: none;
+    border: none;
 }
 
 .presentation-mode .slide-container.active {
     display: flex;
 }
 
-/* Fragment Animations */
-.fragment {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(5px);
-    /* Add blur effect */
-    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.fragment.visible {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-}
-
 /* Controls */
-#presentation-controls {
+#controls {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     z-index: 1000;
     display: flex;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 10px;
 }
 
-.control-btn {
-    width: 45px;
-    height: 45px;
+.btn {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--primary-color);
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.control-btn:hover {
-    transform: scale(1.1);
-    background: #fff;
-    color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-/* Nav Arrows */
-.nav-arrow {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 80px;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.3);
-    border: none;
-    cursor: pointer;
-    font-size: 40px;
-    z-index: 1001;
-    transition: all 0.3s ease;
-    opacity: 0;
-}
-
-body:hover .nav-arrow {
-    opacity: 1;
-}
-
-.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    transform: translateY(-50%) scale(1.1);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
 }
 
-#prev-arrow {
-    left: 20px;
+.btn:hover {
+    background: var(--primary);
 }
 
-#next-arrow {
-    right: 20px;
-}
-
-
-/* Slide Counter */
-#slide-counter {
+#counter {
     position: fixed;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-weight: 500;
-    font-family: 'Azeret Mono', monospace;
-    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
     z-index: 1000;
-    letter-spacing: 1px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
 }
 
-/* Footer info */
-.slide-footer {
-    position: absolute;
-    bottom: 30px;
-    left: 70px;
-    right: 70px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
-    color: #94a3b8;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 15px;
-    z-index: 1;
-}
-
-/* Grid Layout */
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    /* Increased gap */
-}
-
-/* Image styling */
-img {
-    max-width: 100%;
-    height: auto;
+.presentation-mode #counter {
+    display: block;
 }

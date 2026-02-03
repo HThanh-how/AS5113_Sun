@@ -157,6 +157,23 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
     if (e.key === 'ArrowLeft') prevSlide();
     if (e.key === 'f' || e.key === 'F' || e.key === 'p' || e.key === 'P') togglePresentation();
+    if (e.key === 'Escape' && isPresenting) togglePresentation();
+});
+
+// Mouse nav
+document.addEventListener('click', (e) => {
+    // Only trigger in presentation mode and not on buttons
+    if (isPresenting && !e.target.closest('#controls')) {
+        nextSlide();
+    }
+});
+
+document.addEventListener('contextmenu', (e) => {
+    // Right-click = go back in presentation mode
+    if (isPresenting) {
+        e.preventDefault();
+        prevSlide();
+    }
 });
 
 // Scroll Observer for Overview Mode

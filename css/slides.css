@@ -85,11 +85,12 @@ h3 {
 }
 
 h1 {
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 4.5rem;
     font-weight: 800;
     background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
     text-transform: uppercase;

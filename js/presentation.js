@@ -33,6 +33,21 @@ const wrapper = document.getElementById('slides_wrapper');
 let currentSlide = 0;
 let isPresenting = false;
 
+// Auto-Scale Logic
+function handleResize() {
+    if (!isPresenting) {
+        document.body.style.setProperty('--scale', 1);
+        return;
+    }
+    const sx = window.innerWidth / 1280;
+    const sy = window.innerHeight / 720;
+    const scale = Math.min(sx, sy);
+    document.body.style.setProperty('--scale', scale);
+}
+
+window.addEventListener('resize', handleResize);
+
+
 // Load all slides
 async function loadSlides() {
     try {
@@ -58,6 +73,7 @@ async function loadSlides() {
 
         document.getElementById('loading').style.display = 'none';
         updateCounter();
+        return Promise.resolve(); // Return success
 
     } catch (error) {
         console.error(error);
@@ -114,10 +130,25 @@ function togglePresentation() {
 
     if (isPresenting) {
         document.documentElement.requestFullscreen().catch(e => { });
+        handleResize(); // Force recalc scale
         updateView();
+        // Change icon to Stop/Compress
+        const btnIcon = document.querySelector('#controls button:nth-child(2) i');
+        if (btnIcon) {
+            btnIcon.classList.remove('fa-play');
+            btnIcon.classList.add('fa-compress'); // Or fa-stop
+        }
     } else {
         document.exitFullscreen().catch(e => { });
         slides.forEach(s => s.classList.remove('active'));
+        // Change icon back to Play
+        const btnIcon = document.querySelector('#controls button:nth-child(2) i');
+        if (btnIcon) {
+            btnIcon.classList.remove('fa-compress');
+            btnIcon.classList.add('fa-play');
+        }
+        // Sync scroll to current slide
+        slides[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
 
@@ -128,5 +159,27 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'f' || e.key === 'F' || e.key === 'p' || e.key === 'P') togglePresentation();
 });
 
+// Scroll Observer for Overview Mode
+const observer = new IntersectionObserver((entries) => {
+    if (isPresenting) return; // Don't mess with tracking while presenting
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Extract index from id "slide-X"
+            const index = parseInt(entry.target.id.replace('slide-', ''));
+            if (!isNaN(index)) {
+                currentSlide = index;
+                updateCounter();
+            }
+        }
+    });
+}, {
+    threshold: 0.6 // Slide must be 60% visible to be considered "current"
+});
+
 // Init
-loadSlides();
+loadSlides().then(() => {
+    // Attach observer to all slides after they load
+    document.querySelectorAll('.slide-container').forEach(slide => {
+        observer.observe(slide);
+    });
+});

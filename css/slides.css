@@ -165,6 +165,31 @@ strong {
     align-items: stretch;
 }
 
+/* Image containment within grids */
+.grid-2>div,
+.grid-2>figure {
+    overflow: hidden;
+    max-height: 400px;
+}
+
+.grid-2 figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-2 img,
+.content img {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.grid-2 figcaption {
+    flex-shrink: 0;
+}
+
 .card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);

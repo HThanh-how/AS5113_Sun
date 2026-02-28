@@ -308,3 +308,210 @@ body.presentation-mode {
 .presentation-mode #counter {
     display: block;
 }
+
+/* =========================================
+   RESPONSIVE – TABLET (≤ 1024px)
+   ========================================= */
+@media (max-width: 1024px) {
+    .slide-container {
+        width: 95vw;
+        height: auto;
+        min-height: 520px;
+        padding: 40px 45px;
+        margin-bottom: 50px;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+        letter-spacing: -1px;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p,
+    li,
+    div {
+        font-size: 1.15rem;
+    }
+
+    .grid-2 {
+        gap: 30px;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .footer {
+        left: 45px;
+        right: 45px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE – MOBILE (≤ 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .slide-container {
+        width: 96vw;
+        height: auto;
+        min-height: auto;
+        padding: 28px 22px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    p,
+    li,
+    div {
+        font-size: 1.05rem;
+        line-height: 1.5;
+    }
+
+    /* Grid collapse thành 1 cột */
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .grid-2>div {
+        max-height: none;
+    }
+
+    .grid-2 img,
+    .content img {
+        max-height: 220px;
+    }
+
+    .card {
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    .image-placeholder {
+        height: 160px;
+    }
+
+    .footer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin-top: 20px;
+        padding-top: 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Controls nhỏ hơn */
+    #controls {
+        bottom: 12px;
+        right: 12px;
+        gap: 6px;
+    }
+
+    .btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    #counter {
+        font-size: 0.85rem;
+        padding: 4px 12px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE – MOBILE NHỎ (≤ 480px)
+   ========================================= */
+@media (max-width: 480px) {
+    .slide-container {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+        margin-bottom: 12px;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    p,
+    li,
+    div {
+        font-size: 0.95rem;
+    }
+
+    ul {
+        padding-left: 1em;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .grid-2 img,
+    .content img {
+        max-height: 180px;
+    }
+
+    .image-placeholder {
+        height: 120px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,922 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage{geometry}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[most]{tcolorbox}
+
+% Define colors
+\definecolor{bkblue}{RGB}{0,102,153}
+\definecolor{bklight}{RGB}{240,245,250}
+
+% Formatting
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+
+\geometry{
+ a4paper,
+ left=2.5cm,
+ right=2.5cm,
+ top=2cm,
+ bottom=2cm,
+ }
+
+\renewcommand{\normalsize}{\fontsize{13pt}{15.6pt}\selectfont}
+\normalsize
+
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{6pt}
+\linespread{1.3}
+
+% Custom tcolorbox for questions
+\newtcolorbox{questionbox}[1]{
+  colback=bklight,
+  colframe=bkblue,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  boxrule=1pt,
+  arc=4pt,
+  left=10pt,
+  right=10pt,
+  top=8pt,
+  bottom=8pt,
+  before skip=12pt,
+  after skip=12pt
+}
+
+% Section formatting
+\titleformat{\section}
+  {\centering\normalfont\fontsize{14}{17}\bfseries\color{bkblue}\MakeUppercase}
+  {CHƯƠNG \thesection.\ }{0em}{}
+\titlespacing*{\section}{0pt}{18pt}{8pt}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{13}{16}\bfseries\color{bkblue}}
+  {\thesubsection.}{0.5em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+% ============ TRANG BÌA ============
+\begin{titlepage}
+    \newgeometry{left=1.5cm, right=1.5cm, top=1cm, bottom=1cm}
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[bkblue, line width=2pt] 
+            ([shift={(0.8cm,-0.8cm)}]current page.north west) 
+            rectangle 
+            ([shift={(-0.8cm,0.8cm)}]current page.south east);
+        \draw[bkblue, line width=0.5pt] 
+            ([shift={(1cm,-1cm)}]current page.north west) 
+            rectangle 
+            ([shift={(-1cm,1cm)}]current page.south east);
+    \end{tikzpicture}
+    
+    \centering
+    \vspace*{0.5cm}
+    
+    {\fontsize{14}{17}\selectfont \textbf{TRƯỜNG ĐẠI HỌC BÁCH KHOA}} \\
+    \vspace{0.2cm}
+    {\fontsize{14}{17}\selectfont \textbf{ĐẠI HỌC QUỐC GIA -- THÀNH PHỐ HỒ CHÍ MINH}} \\
+    \vspace{0.3cm}
+    {\color{bkblue} \textbf{------***------}}
+    
+    \vspace{1.2cm}
+    \includegraphics[height=2.5cm]{images/logo_bk.png}
+    \vspace{1.2cm}
+    
+    {\fontsize{16}{20}\selectfont \color{bkblue} \textbf{TÀI LIỆU ÔN TẬP TOÀN DIỆN \& CHUYÊN SÂU}} \\[0.4cm]
+    {\fontsize{18}{22}\selectfont \textbf{NỘI DUNG TRỌNG TÂM MÔN TRIẾT HỌC}} \\[0.2cm]
+    {\fontsize{14}{17}\selectfont \textbf{HỌC PHẦN DÀNH CHO TRÌNH ĐỘ SAU ĐẠI HỌC}}
+    
+    \vspace{1cm}
+    \begin{tcolorbox}[colback=white, colframe=bkblue, width=14cm, arc=5pt, halign=center]
+        \fontsize{13}{16}\selectfont
+        \textbf{Mã môn học:} AS 5113 \\
+        \textbf{Học kỳ:} HK 252 \\
+        \textbf{Năm học:} 2025 -- 2026
+    \end{tcolorbox}
+    
+    \vfill
+    
+    \begin{flushleft}
+        \fontsize{12}{15}\selectfont
+        \hspace{2cm} \textbf{Môn học:} Triết học (Sau Đại học) \\
+        \hspace{2cm} \textbf{Tài liệu ôn tập:} Đầy đủ 22 câu hỏi ôn tập \\
+        \hspace{2cm} \textbf{Mục tiêu:} Đạt điểm 10 tuyệt đối trong kỳ thi cuối kỳ \\
+        \hspace{2cm} \textbf{Lưu hành:} Nội bộ học viên lớp CH03
+    \end{flushleft}
+    
+    \vfill
+    {\fontsize{13}{16}\selectfont \textit{Thành phố Hồ Chí Minh -- 2026}}
+    \vspace{0.5cm}
+    \restoregeometry
+\end{titlepage}
+
+% ============ MỤC LỤC ============
+\newpage
+\tableofcontents
+\newpage
+
+% ============ CHƯƠNG 1 ============
+\section{KHÁI LUẬN VỀ TRIẾT HỌC}
+
+\subsection{Triết học Phật giáo nguyên thủy và sự du nhập vào Việt Nam}
+
+\begin{questionbox}{Câu 1: Phật giáo nguyên thủy và sự du nhập vào Việt Nam}
+Trình bày điều kiện ra đời, cơ sở lý luận đưa đến sự ra đời của Phật giáo nguyên thủy. Những nội dung tư tưởng cơ bản của triết học Phật giáo nguyên thủy (bản thể luận, nhận thức luận và nhân bản luận). Điều kiện và quá trình Phật giáo du nhập, tồn tại và phát triển ở Việt Nam. Những nét đặc thù của Phật giáo ở Việt Nam.
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện ra đời và cơ sở lý luận của Phật giáo nguyên thủy:}
+\begin{itemize}
+    \item \textit{Điều kiện kinh tế -- xã hội:} Phật giáo ra đời vào khoảng thế kỷ thứ VI TCN tại Ấn Độ cổ đại, trong bối cảnh xã hội có những biến động sâu sắc. Chế độ phân chia đẳng cấp hà khắc (Varna) gồm bốn đẳng cấp chính: Tăng lữ (Brahmana), Quý tộc (Ksatriya), Bình dân (Vaisya) và Tiện dân (Sudra) đã tạo ra sự bất công xã hội cực kỳ gay gắt. Đồng thời, sự phát triển của nền kinh tế tiền tệ và đô thị hóa dẫn đến sự trỗi dậy của tầng lớp vương quyền và thương nhân, thách thức vị thế độc tôn của đẳng cấp Bà-la-môn.
+    \item \textit{Cơ sở lý luận:} Phật giáo vừa kế thừa vừa phê phán các trào lưu triết học -- tôn giáo đương thời. Một mặt, Phật giáo phản đối thẩm quyền tối cao của kinh Veda và sự thao túng của đạo Bà-la-môn. Mặt khác, Phật giáo tiếp thu và cải biến các khái niệm như Nghiệp (Karma), Luân hồi (Samsara), Giải thoát (Moksha) từ triết học Upanishad, đồng thời chịu ảnh hưởng từ tư tưởng vô thần của phái Lokayata và trường phái tu hành khổ hạnh tự do (Sramana).
+\end{itemize}
+
+\noindent
+\textbf{2. Nội dung tư tưởng cơ bản của Phật giáo nguyên thủy:}
+\begin{itemize}
+    \item \textit{Bản thể luận (Thuyết Duyên khởi, Vô thường, Vô ngã):}
+    \begin{itemize}
+        \item \textbf{Duyên khởi (Pratītyasamutpāda):} Quy luật phổ biến chi phối toàn bộ vũ trụ: ``Cái này có thì cái kia có; cái này sinh thì cái kia sinh; cái này không thì cái kia không; cái này diệt thì cái kia diệt''. Mọi hiện tượng đều do sự hội tụ của nhiều nhân duyên mà thành, không có một đấng tối cao nào sáng tạo ra thế giới.
+        \item \textbf{Vô thường (Anitya):} Vạn vật luôn nằm trong trạng thái biến đổi không ngừng, trải qua bốn giai đoạn: Thành -- Trụ -- Hoại -- Không (đối với vũ trụ) hoặc Sinh -- Lão -- Bệnh -- Tử (đối với con người). Không có gì là vĩnh hằng, bất biến.
+        \item \textbf{Vô ngã (Anatman):} Không có một cái ``Tôi'' (Ngã) độc lập, thường hằng, tồn tại tự thân. Con người chỉ là sự hợp thành tạm thời của Năm yếu tố (Ngũ uẩn): Sắc (thể chất), Thụ (cảm giác), Tưởng (tri giác), Hành (hoạt động tâm lý), Thức (nhận thức). Khi duyên tan, Ngũ uẩn ly tán, cái gọi là ``Ngã'' cũng biến mất.
+    \end{itemize}
+    \item \textit{Nhận thức luận:} Phật giáo coi nhận thức thông thường của con người bị che mờ bởi Vô minh (Avidya) -- sự hiểu lầm về tính vô thường và vô ngã của thế giới, dẫn đến bám víu và đau khổ. Nhận thức đúng đắn phải đạt tới Trí tuệ (Panna) -- khả năng nhìn nhận vạn vật như chính nó đang là (Như thực tri kiến). Nguồn gốc của tri thức gồm trực giác tâm linh qua thiền định (Thiền -- Samadhi) kết hợp với tư duy lý tính sâu sắc phản tỉnh.
+    \item \textit{Nhân bản luận (Thuyết Tứ diệu đế):} Trọng tâm của Phật giáo hướng về giải phóng con người khỏi đau khổ thông qua bốn chân lý tối cao:
+    \begin{itemize}
+        \item \textbf{Khổ đế (Dukkha):} Thừa nhận thực trạng cuộc đời là bể khổ (Sinh, lão, bệnh, tử, oán tằng hội khổ, ái biệt ly khổ, cầu bất đắc khổ, ngũ ấm xí thịnh khổ).
+        \item \textbf{Tập đế (Samudaya):} Chỉ ra nguyên nhân gây khổ là do Lòng tham ái (Tanha), Sự sân hận (Dvesha) và Vô minh (Avidya).
+        \item \textbf{Diệt đế (Nirodha):} Khẳng định nỗi khổ có thể chấm dứt hoàn toàn, đạt tới trạng thái Niết Bàn (Nirvana) -- sự dập tắt hoàn toàn ngọn lửa tham, sân, si, mang lại sự bình an tuyệt đối.
+        \item \textbf{Đạo đế (Magga):} Con đường dẫn tới diệt khổ là Bát chính đạo gồm 8 nhánh, chia làm 3 nhóm lớn: Giới (Chính ngữ, Chính nghiệp, Chính mệnh), Định (Chính tinh tiến, Chính niệm, Chính định), và Tuệ (Chính kiến, Chính tư duy).
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Quá trình du nhập, tồn tại và phát triển của Phật giáo ở Việt Nam:}
+\begin{itemize}
+    \item \textit{Điều kiện và con đường du nhập:} Phật giáo du nhập vào Việt Nam từ rất sớm, khoảng đầu công nguyên bằng cả đường biển (trực tiếp từ Ấn Độ thông qua các thương nhân và tăng sĩ như Khâu-đà-la, Mâu Tử) và đường bộ (từ Trung Quốc). Trung tâm Luy Lâu (Bắc Ninh) trở thành cái nôi Phật giáo lớn nhất khu vực thời bấy giờ.
+    \item \textit{Các giai đoạn phát triển chính:}
+    \begin{itemize}
+        \item \textbf{Thời kỳ đầu (Thế kỷ I -- X):} Phật giáo hòa quyện sâu sắc với tín ngưỡng bản địa (thờ các vị thần tự nhiên như Tứ pháp: Vân, Vũ, Lôi, Điện), mang màu sắc dân gian, huyền bí.
+        \item \textbf{Thời kỳ hoàng kim (Thế kỷ XI -- XIV):} Dưới triều Lý -- Trần, Phật giáo trở thành quốc giáo. Các nhà sư như Vạn Hạnh, Khuông Việt tham chính, hỗ trợ triều đình dựng nước và giữ nước. Vua Trần Nhân Tông sáng lập Thiền phái Trúc Lâm Yên Tử, đánh dấu sự tự chủ hoàn toàn về mặt tư tưởng Phật giáo của người Việt.
+        \item \textbf{Thời kỳ suy thoái và phục hưng (Thế kỷ XV đến nay):} Nho giáo chiếm thế độc tôn từ thời Lê Sơ khiến Phật giáo lui về làng xã. Tuy nhiên, Phật giáo vẫn luôn đồng hành cùng đời sống tinh thần của nhân dân, thể hiện qua phong trào chấn hưng Phật giáo thế kỷ XX.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{4. Những nét đặc thù của Phật giáo Việt Nam:}
+\begin{itemize}
+    \item \textit{Tính dung hợp và hòa đồng:} Phật giáo Việt Nam không bài trừ các tôn giáo khác mà chủ động dung hợp với tín ngưỡng bản địa (thờ Mẫu, thờ tổ tiên) và phối hợp với Nho giáo, Đạo giáo tạo nên hiện tượng tư tưởng đặc sắc ``Tam giáo đồng nguyên'' (ba tôn giáo cùng chung một nguồn cội đạo đức).
+    \item \textit{Tính nhập thế và yêu nước:} Các thiền sư Việt Nam không lánh đời thoát tục mà chủ động gánh vác trách nhiệm với quốc gia, dân tộc. Đỉnh cao là tinh thần ``Cư trần lạc đạo'' (Ở đời vui đạo) của Thiền phái Trúc Lâm -- tu hành ngay giữa cuộc đời, cống hiến cho sự bình yên và độc lập của Tổ quốc.
+    \item \textit{Tính nữ tính hóa và từ bi bình dân:} Hình ảnh Bồ Tát Quán Thế Âm trong tâm thức người Việt thường được dân gian hóa thành các vị Phật bà che chở, cứu khổ cứu nạn (như Phật Bà Quan Âm Thị Kính, Quan Âm Diệu Thiện), phản ánh tư tưởng trọng mẫu của nền văn minh lúa nước.
+\end{itemize}
+
+\subsection{Triết học Nho giáo và sự ảnh hưởng tại Việt Nam}
+
+\begin{questionbox}{Câu 2: Nho giáo và sự ảnh hưởng tại Việt Nam}
+Trình bày điều kiện ra đời, cơ sở lý luận đưa đến sự ra đời của Nho giáo thời kỳ Trung Hoa cổ đại. Những nội dung tư tưởng cơ bản của triết học Nho giáo (thuyết chính danh, phạm trù nhân, bản tính con người, tư tưởng giáo dục và đức trị). Điều kiện ra đời, cơ sở lý luận để Nho giáo du nhập, tồn tại và phát triển ở Việt Nam. Những nội dung cơ bản của Nho giáo ở Việt Nam.
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện ra đời và cơ sở lý luận của Nho giáo Trung Hoa:}
+\begin{itemize}
+    \item \textit{Điều kiện kinh tế -- xã hội:} Nho giáo ra đời vào thời đại Xuân Thu -- Chiến Quốc (thế kỷ VI -- III TCN). Đây là giai đoạn xã hội Trung Hoa cổ đại chuyển biến từ chế độ chiếm hữu nô lệ nhà Chu sang chế độ phong kiến sơ kỳ. Trật tự xã hội cũ bị đảo lộn dữ dội (thế giới quan thiên mệnh bị nghi ngờ, chư hầu tiếm quyền thiên tử, tôi giết vua, con giết cha), chiến tranh liên miên gây ra thảm cảnh xã hội. Yêu cầu lịch sử cấp bách là phải tìm kiếm một học thuyết chính trị -- đạo đức để lập lại trật tự, ổn định xã hội.
+    \item \textit{Cơ sở lý luận:} Khổng Tử (người sáng lập Nho giáo) đã kế thừa kho tàng di sản văn hóa cổ đại Trung Hoa, đặc biệt là chế độ lễ nhạc của nhà Chu (Chu Công). Ông chủ trương ``Thuật nhi bất tác, tín nhi hiếu cổ'' (truyền lại chứ không sáng tác mới, tin và thích đạo cổ), hệ thống hóa các tư tưởng chính trị, đạo đức truyền thống thành một học thuyết chặt chẽ.
+\end{itemize}
+
+\noindent
+\textbf{2. Nội dung tư tưởng cơ bản của triết học Nho giáo:}
+\begin{itemize}
+    \item \textit{Thuyết Chính danh (Zhengming):} Khổng Tử cho rằng sự hỗn loạn của xã hội bắt nguồn từ việc danh nghĩa và thực tiễn không khớp nhau. Chính danh yêu cầu: ``Quân quân, thần thần, phụ phụ, tử tử'' (Vua ra vua, tôi ra tôi, cha ra cha, con ra con). Mỗi cá nhân phải thực hiện đúng quyền hạn, nghĩa vụ và chuẩn mực đạo đức tương ứng với vị thế xã hội của mình. Nếu danh không chính thì ngôn không thuận, việc không thành, lễ nhạc không hưng thịnh, hình phạt không trúng, dân không biết đặt tay chân vào đâu.
+    \item \textit{Phạm trù Nhân (Ren):} Là hạt nhân cốt lõi trong đạo đức học Nho giáo. ``Nhân'' là lòng thương người (Nhân giả ái nhân), biết tôn trọng và đối xử tử tế với đồng loại. Biểu hiện của Nhân là ``Kỷ sở bất dục, vật thi ư nhân'' (Điều gì mình không muốn thì đừng làm cho người khác) và ``Kỷ dục lập nhi lập nhân, kỷ dục đạt nhi đạt nhân'' (Mình muốn đứng vững thì giúp người khác đứng vững, mình muốn thành đạt thì giúp người khác thành đạt). Nhân là gốc của Lễ, Nghĩa, Trí, Tín.
+    \item \textit{Tư tưởng về bản tính con người:}
+    \begin{itemize}
+        \item Khổng Tử nhận định khái quát: ``Tính tương cận dã, tập tương viễn dã'' (Bản tính con người vốn gần nhau, do học tập, bắt chước và thói quen mà xa nhau).
+        \item \textbf{Mạnh Tử (Phái Duy tâm chủ quan):} Đề xướng thuyết ``Tính thiện''. Con người sinh ra đã có sẵn bốn mầm mống đạo đức (Tứ đoan): Lòng trắc ẩn (gốc của Nhân), Lòng tu ố (gốc của Nghĩa), Lòng từ tốn (gốc của Lễ), Lòng thị phi (gốc của Trí). Giáo dục có nhiệm vụ giữ gìn và phát triển bản tính thiện đó.
+        \item \textbf{Tuân Tử (Phái Duy vật thực chứng):} Đề xướng thuyết ``Tính ác''. Bản tính tự nhiên của con người là hướng đến lợi lộc, dục vọng ích kỷ. Tính thiện của con người chỉ là kết quả của sự rèn luyện, giáo hóa xã hội (gọi là ``Nhân vi'' -- do con người làm ra). Ông đề cao vai trò của Lễ và Pháp để kiềm chế tính ác.
+    \end{itemize}
+    \item \textit{Tư tưởng giáo dục:} Nho giáo đề cao vai trò của giáo dục trong cải biến con người và xã hội. Khổng Tử chủ trương ``Hữu giáo vô loại'' (Trong giáo dục không phân biệt đẳng cấp). Mục tiêu giáo dục là đào tạo những mẫu người lý tưởng -- bậc Quân tử có đầy đủ đức độ và trí tuệ để gánh vác việc nước. Phương pháp dạy học chú trọng khơi gợi tư duy chủ động (``Không giận vì muốn biết thì không khai sáng''), học đi đôi với hành, ôn cũ biết mới.
+    \item \textit{Tư tưởng Đức trị và Nhân trị:} Đối lập với Pháp gia chủ trương dùng hình phạt tàn khốc, Nho giáo đề nghị trị nước bằng đạo đức, giáo hóa đạo đức (Đức trị) và bằng nghi lễ, phép tắc ứng xử (Lễ trị). Vua phải tự mình làm gương sáng về đạo đức để cảm hóa muôn dân: ``Trị nước bằng đạo đức giống như sao Bắc Đẩu ở một nơi mà các sao khác đều hướng về''.
+\end{itemize}
+
+\noindent
+\textbf{3. Điều kiện và quá trình du nhập, phát triển của Nho giáo ở Việt Nam:}
+\begin{itemize}
+    \item \textit{Điều kiện du nhập:} Nho giáo theo chân quân xâm lược phương Bắc du nhập vào Việt Nam từ thời Bắc thuộc (đầu công nguyên). Ban đầu, nó được phong kiến phương Bắc dùng làm công cụ đồng hóa và cai trị. Tuy nhiên, sau khi giành được độc lập tự chủ (thế kỷ X), các vương triều Việt Nam nhận thấy cấu trúc chặt chẽ của Nho giáo là công cụ đắc lực để xây dựng chính quyền trung ương tập quyền, ổn định xã hội và phát triển văn hóa bản địa.
+    \item \textit{Các giai đoạn phát triển:}
+    \begin{itemize}
+        \item \textbf{Thời Lý -- Trần (Thế kỷ XI -- XIV):} Vương triều Lý thành lập Văn Miếu -- Quốc Tử Giám (1070), mở khoa thi Nho học đầu tiên (1075). Thời kỳ này Nho giáo tồn tại trong thế song hành và dung hợp với Phật giáo và Đạo giáo.
+        \item \textbf{Thời Lê Sơ (Thế kỷ XV):} Sau chiến thắng quân Minh, vua Lê Thánh Tông đã đưa Nho giáo lên vị trí độc tôn, biến nó thành hệ tư tưởng chính thống duy nhất điều hành bộ máy nhà nước, luật pháp (Luật Hồng Đức) và giáo dục khoa cử.
+        \item \textbf{Thời Nguyễn (Thế kỷ XIX):} Nho giáo tiếp tục được duy trì nghiêm ngặt để bảo vệ ngai vàng phong kiến nhưng dần rơi vào giáo điều, xơ cứng trước làn sóng xâm lăng của phương Tây.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{4. Những nội dung và đặc điểm cơ bản của Nho giáo Việt Nam:}
+\begin{itemize}
+    \item \textit{Biến đổi lòng trung quân thành ái quốc:} Ở Trung Quốc, chữ ``Trung'' (Trung quân -- trung thành với vua) đặt lên hàng đầu. Khi sang Việt Nam, chữ ``Trung'' gắn liền với chữ ``Hiếu'' và biến đổi sâu sắc thành lòng yêu nước, trung thành với nền độc lập dân tộc. Lợi ích của nhà vua chỉ được thừa nhận khi nó đồng nhất với lợi ích quốc gia.
+    \item \textit{Tính dung hợp tôn giáo (Tam giáo đồng nguyên):} Nho giáo Việt Nam không cực đoan bài trừ Phật giáo và Đạo giáo. Trí thức Nho học Việt Nam thường hành xử theo tinh thần: Lúc đắc chí thì theo Nho giáo để cống hiến cho đời; lúc trị quốc bình thiên hạ gặp trắc trở hoặc khi về hưu thì tìm đến thiền của Phật giáo hoặc sự tự tại của Đạo giáo để dưỡng tâm.
+    \item \textit{Đề cao đạo đức làng xã và gia đình:} Nho giáo Việt Nam kết hợp chặt chẽ với luật tục làng xã (Hương ước), tạo nên sức mạnh gắn kết cộng đồng bền chặt trong các cuộc chiến tranh chống ngoại xâm.
+\end{itemize}
+
+\subsection{Điều kiện ra đời và nội dung cốt lõi của Tư tưởng Hồ Chí Minh}
+
+\begin{questionbox}{Câu 3: Tư tưởng Hồ Chí Minh}
+Trình bày điều kiện ra đời, cơ sở lý luận, các thời kỳ hình thành và phát triển tư tưởng Hồ Chí Minh. Các nội dung chính của tư tưởng Hồ Chí Minh (độc lập dân tộc gắn liền với CNXH; Cách mạng giải phóng dân tộc và vấn đề dân tộc; Cách mạng XHCN và thời kỳ quá độ lên CNXH, Đại đoàn kết dân tộc và đoàn kết quốc tế, Đảng Cộng sản Việt Nam là Đảng cầm quyền, Nhà nước pháp quyền XHCN của dân, do dân, vì dân; Văn hóa và xây dựng con người mới phát triển toàn diện; Đạo đức cách mạng).
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện ra đời và cơ sở lý luận của Tư tưởng Hồ Chí Minh:}
+\begin{itemize}
+    \item \textit{Bối cảnh lịch sử -- xã hội:}
+    \begin{itemize}
+        \item \textbf{Quốc tế:} Cuối thế kỷ XIX, đầu thế kỷ XX, chủ nghĩa tư bản chuyển sang giai đoạn độc quyền (chủ nghĩa đế quốc), tăng cường xâm lược thuộc địa. Cách mạng Tháng Mười Nga năm 1917 thành công đã mở ra thời đại mới -- thời đại quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội trên phạm vi toàn cầu, thức tỉnh các dân tộc bị áp bức.
+        \item \textbf{Trong nước:} Thực dân Pháp xâm lược Việt Nam (1858), thiết lập ách đô hộ tàn bạo, biến nước ta từ xã hội phong kiến thành xã hội thuộc địa nửa phong kiến. Các phong trào yêu nước theo khuynh hướng phong kiến (Cần Vương) và dân chủ tư sản (Phan Bội Châu, Phan Châu Trinh) đều thất bại hoàn toàn. Lịch sử dân tộc đặt ra yêu cầu bức thiết phải tìm ra con đường cứu nước mới.
+    \end{itemize}
+    \item \textit{Cơ sở lý luận hình thành:}
+    \begin{itemize}
+        \item \textbf{Tinh hoa văn hóa truyền thống dân tộc:} Lòng yêu nước nồng nàn, ý chí tự lực tự cường, tinh thần đoàn kết, tương thân tương ái, và chủ nghĩa nhân văn Việt Nam.
+        \item \textbf{Tinh hoa văn hóa nhân loại:} Tiếp thu tư tưởng nhân nghĩa, triết lý hành động của Nho giáo; tư tưởng từ bi, bình đẳng của Phật giáo; tư tưởng tự do, dân chủ của cách mạng Pháp và Mỹ.
+        \item \textbf{Chủ nghĩa Mác -- Lênin:} Là cơ sở thế giới quan và phương pháp luận quyết định bước chuyển về chất trong tư tưởng Hồ Chí Minh. Người tiếp thu chủ nghĩa Mác -- Lênin không phải như giáo điều mà vận dụng sáng tạo vào hoàn cảnh cụ thể của Việt Nam.
+    \end{itemize}
+    \item \textit{Nhân tố chủ quan (Phẩm chất cá nhân Hồ Chí Minh):} Trí tuệ nhạy bén, khả năng quan sát thực tiễn sắc sảo; lòng yêu nước, thương dân nồng nàn; ý chí mãnh liệt cứu nước cứu dân và sự khổ công học tập, hoạt động thực tiễn phong phú ở nhiều nước trên thế giới.
+\end{itemize}
+
+\noindent
+\textbf{2. Các thời kỳ hình thành và phát triển tư tưởng Hồ Chí Minh:}
+\begin{itemize}
+    \item \textit{Thời kỳ trước năm 1911:} Tiếp thu truyền thống yêu nước của gia đình và quê hương, hình thành chí hướng cứu nước.
+    \item \textit{Thời kỳ 1911 -- 1920 (Tìm tòi con đường cứu nước):} Khảo sát thực tiễn thế giới, tiếp thu Luận cương của Lênin về vấn đề dân tộc và thuộc địa, tìm ra con đường cứu nước giải phóng dân tộc theo con đường cách mạng vô sản.
+    \item \textit{Thời kỳ 1920 -- 1930 (Hình thành cơ bản tư tưởng về cách mạng Việt Nam):} Tích cực truyền bá chủ nghĩa Mác -- Lênin vào phong trào công nhân và phong trào yêu nước Việt Nam, soạn thảo Sách lược vắn tắt, Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam (1930).
+    \item \textit{Thời kỳ 1930 -- 1945 (Vượt qua thử thách, kiên trì giữ vững quan điểm):} Lãnh đạo phong trào cách mạng giải phóng dân tộc đi tới thắng lợi của Cách mạng Tháng Tám năm 1945, khai sinh ra nước Việt Nam Dân chủ Cộng hòa.
+    \item \textit{Thời kỳ 1945 -- 1969 (Tư tưởng tiếp tục phát triển và hoàn thiện):} Lãnh đạo kháng chiến chống Pháp, chống Mỹ cứu nước và xây dựng chủ nghĩa xã hội ở miền Bắc.
+\end{itemize}
+
+\noindent
+\textbf{3. Nội dung cốt lõi của Tư tưởng Hồ Chí Minh:}
+\begin{itemize}
+    \item \textit{Độc lập dân tộc gắn liền với CNXH:} Là sợi chỉ đỏ xuyên suốt toàn bộ di sản tư tưởng Hồ Chí Minh. Giải phóng dân tộc là bước đầu tiên, tạo tiền đề để đi lên xây dựng chủ nghĩa xã hội. Ngược lại, chủ nghĩa xã hội là điều kiện tiên quyết để bảo vệ vững chắc độc lập dân tộc, mang lại tự do, hạnh phúc thực sự cho nhân dân.
+    \item \textit{Cách mạng giải phóng dân tộc và vấn đề dân tộc:} Hồ Chí Minh khẳng định cách mạng giải phóng dân tộc ở các nước thuộc địa có tính chủ động rất lớn, không hoàn toàn phụ thuộc vào thắng lợi của cách mạng vô sản ở chính quốc. Nó có thể giành thắng lợi trước cách mạng ở chính quốc bằng cách ``đem sức ta mà giải phóng cho ta''.
+    \item \textit{Cách mạng XHCN và thời kỳ quá độ:} Xây dựng CNXH ở Việt Nam là một quá trình biến đổi lâu dài, gian khổ vì phải đi lên từ một nước nông nghiệp lạc hậu, bỏ qua giai đoạn tư bản chủ nghĩa. Bước đi phải thận trọng, chắc chắn, phù hợp với lòng dân, không được chủ quan nóng vội.
+    \item \textit{Đại đoàn kết dân tộc và đoàn kết quốc tế:} ``Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công''. Đại đoàn kết dân tộc phải dựa trên liên minh Công -- Nông -- Trí thức làm nền tảng, tập hợp mọi lực lượng yêu nước. Đồng thời, phải kết hợp sức mạnh dân tộc với sức mạnh thời đại, tranh thủ sự ủng hộ của các lực lượng tiến bộ thế giới.
+    \item \textit{Đảng Cộng sản Việt Nam cầm quyền:} Đảng phải là đội tiên phong của giai cấp công nhân và của toàn thể dân tộc Việt Nam. Đảng cầm quyền phải vừa là người lãnh đạo vừa là người đầy tớ trung thành của nhân dân. Đảng phải thường xuyên tự chỉnh đốn, chống lại các căn bệnh thoái hóa, biến chất.
+    \item \textit{Nhà nước pháp quyền của dân, do dân, vì dân:} Tất cả quyền lực thuộc về nhân dân. Nhà nước quản lý xã hội bằng Hiến pháp và pháp luật (thượng tôn pháp luật), đồng thời phải đề cao đạo đức cách mạng của đội ngũ cán bộ.
+    \item \textit{Văn hóa và xây dựng con người mới:} Văn hóa là động lực, là mục tiêu của cách mạng. Xây dựng con người mới phát triển toàn diện có đức có tài: ``Vì lợi ích mười năm thì phải trồng cây, vì lợi ích trăm năm thì phải trồng người''.
+    \item \textit{Đạo đức cách mạng:} Đề cao các chuẩn mực đạo đức cốt lõi: Trung với nước, hiếu với dân; Cần, Kiệm, Liêm, Chính, Chí công vô tư; có tinh thần nhân đạo quốc tế trong sáng.
+\end{itemize}
+
+\subsection{Sự phát triển và đặc điểm của Triết học Phương Tây}
+
+\begin{questionbox}{Câu 4: Sự phát triển và đặc điểm của Triết học Phương Tây}
+Trình bày điều kiện kinh tế - xã hội, cơ sở lý luận đưa đến sự ra đời của triết học phương Tây: các trường phái triết học đều có cội nguồn từ triết học Hy Lạp cổ đại, gắn kết chặt chẽ với khoa học, đề cao chủ nghĩa duy lý và chủ nghĩa nhân văn gắn với lý tưởng giải phóng con người.
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện kinh tế -- xã hội và lịch sử cho sự ra đời của triết học phương Tây:}
+\begin{itemize}
+    \item \textit{Chế độ chiếm hữu nô lệ dân chủ cổ đại:} Khác với các nước phương Đông cổ đại mang nặng tính chất chuyên chế quân chủ, triết học phương Tây nảy sinh trong bối cảnh các đô thị bang (Polis) dân chủ chủ nô ở Hy Lạp (đặc biệt là Athens) phát triển mạnh mẽ. Ở đây, các công dân tự do có quyền tham gia thảo luận các công việc chung của quốc gia tại quảng trường công cộng. Môi trường chính trị tự do, cởi mở này thúc đẩy sự phát triển của tư duy độc lập, tranh luận logic và sự hình thành triết học bác học tự do.
+    \item \textit{Sự phát triển của kinh tế thương nghiệp hàng hải:} Vị trí địa lý vùng Địa Trung Hải tạo điều kiện cho Hy Lạp cổ đại phát triển mạnh mẽ ngành hàng hải, thủ công nghiệp và thương mại quốc tế. Sự tiếp xúc thường xuyên với nhiều nền văn hóa khác nhau (Ai Cập, Lưỡng Hà) đã giúp phá vỡ các định kiến thần thoại chật hẹp, mở rộng tầm nhìn địa lý và thế giới quan khoa học của người Hy Lạp.
+\end{itemize}
+
+\noindent
+\textbf{2. Cơ sở lý luận và các đặc trưng cốt lõi của triết học phương Tây:}
+\begin{itemize}
+    \item \textit{Cội nguồn từ triết học Hy Lạp cổ đại:} Mọi tư tưởng, phạm trù, và phương pháp tư duy của triết học phương Tây hiện đại (từ chủ nghĩa duy vật, chủ nghĩa duy tâm, phép biện chứng, siêu hình học cho đến đạo đức học) đều có thể tìm thấy mầm mống sơ khởi trong thời kỳ Hy Lạp cổ đại. Đúng như nhà triết học Whitehead từng nhận định: ``Toàn bộ triết học phương Tây chẳng qua chỉ là một chuỗi các chú thích cho triết học của Plato''.
+    \item \textit{Sự gắn kết chặt chẽ giữa triết học và khoa học tự nhiên:} Ngay từ buổi bình minh, các triết gia phương Tây đồng thời là các nhà khoa học tự nhiên (như Thales là nhà toán học/thiên văn học, Democritus là nhà vật lý học). Triết học phương Tây nỗ lực giải thích thế giới bằng các quy luật vật lý, toán học khách quan chứ không lồng ghép các yếu tố thần linh, tâm linh huyền bí. Sự phát triển của triết học luôn song hành và thúc đẩy sự phát triển của khoa học tự nhiên.
+    \item \textit{Đề cao chủ nghĩa duy lý (Rationalism):} Triết học phương Tây coi Lý tính (Logos / Ratio) là công cụ nhận thức tối cao và duy nhất để khám phá chân lý. Trí tuệ con người có khả năng tự mình nhận thức bản chất sâu xa của vũ trụ mà không cần đến sự mặc khải hay đức tin tôn giáo mù quáng. Tư duy logic, định lượng toán học và lập luận chặt chẽ được đặt lên vị trí ưu tiên tuyệt đối.
+    \item \textit{Chủ nghĩa nhân văn (Humanism) và lý tưởng giải phóng con người:} Khác với tư tưởng nhẫn nhục, an phận, triết học phương Tây lấy con người làm trung tâm của nhận thức. Đề cao khát vọng tự do cá nhân, giải phóng trí tuệ con người khỏi xiềng xích của thần quyền và giáo điều trung cổ. Lý tưởng tối cao là hướng tới sự tự do, khẳng định sức mạnh và vị thế làm chủ tự nhiên của con người.
+\end{itemize}
+
+\subsection{Triết học Hy Lạp cổ đại và những đặc điểm cơ bản}
+
+\begin{questionbox}{Câu 5: Triết học Hy Lạp cổ đại}
+Trình bày điều kiện ra đời và phát triển của triết học Hy Lạp cổ đại: những đặc điểm cơ bản của triết học phương Hy Lạp cổ đại: tính duy vật chất phác, tư tưởng biện chứng tự phát; chứa đựng hầu hết các TGQ và là tiền đề cho sự phát triển của triết học phương Tây sau này.
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện ra đời và phát triển của triết học Hy Lạp cổ đại:}
+\begin{itemize}
+    \item \textit{Điều kiện tự nhiên:} Địa hình đồi núi hiểm trở chia cắt Hy Lạp thành nhiều thung lũng nhỏ, thúc đẩy sự hình thành các thành bang độc lập thay vì một đế chế thống nhất. Bờ biển khúc khuỷu tạo nên nhiều cảng biển tự nhiên sâu, thúc đẩy giao lưu văn hóa và tri thức với các nền văn minh tiên tiến phương Đông.
+    \item \textit{Sự phân công lao động xã hội:} Chế độ chiếm hữu nô lệ đã phân tách triệt để lực lượng lao động trí óc (tầng lớp chủ nô tự do) khỏi lao động chân tay (nô lệ). Điều này cho phép các triết gia có toàn bộ thời gian rảnh rỗi để chuyên tâm quan sát thiên nhiên, suy ngẫm về vũ trụ và xây dựng hệ thống tư tưởng học thuật độc lập.
+\end{itemize}
+
+\noindent
+\textbf{2. Những đặc điểm cơ bản của triết học Hy Lạp cổ đại:}
+\begin{itemize}
+    \item \textit{Tính duy vật chất phác (Na\"{i}ve Materialism):}
+    \begin{itemize}
+        \item Các nhà triết học duy vật thời kỳ này cố gắng giải thích toàn bộ sự đa dạng của vũ trụ từ một hoặc một vài thực thể vật chất cụ thể, cảm tính gọi là ``Bản nguyên'' (Arche).
+        \item \textbf{Thales:} Coi nước là bản nguyên của vạn vật. Nước sinh ra vạn vật và vạn vật lại trở về với nước.
+        \item \textbf{Anaximenes:} Coi không khí là bản nguyên. Do quá trình ngưng tụ và loãng ra của không khí mà tạo nên đất, đá, nước, lửa.
+        \item \textbf{Heraclitus:} Coi lửa là bản nguyên. Thế giới là một đốm lửa vĩnh hằng, không do một đấng tối cao nào tạo ra, bùng cháy theo quy luật và tàn lụi theo quy luật.
+        \item \textbf{Democritus (Đỉnh cao của phái duy vật):} Đề xuất thuyết Nguyên tử. Thế giới cấu tạo từ các hạt nguyên tử cực nhỏ, không thể phân chia, chuyển động trong khoảng không vũ trụ. Sự kết hợp hay chia tách của các nguyên tử tạo ra vạn vật.
+    \end{itemize}
+    \item \textit{Tư tưởng biện chứng tự phát (Spontaneous Dialectics):}
+    \begin{itemize}
+        \item Coi thế giới là một chỉnh thể luôn biến đổi, vận động, phát triển trong sự tương tác lẫn nhau. Tuy nhiên, phép biện chứng này chỉ dựa trên sự quan sát trực giác trực tiếp chứ chưa có sự chứng minh khoa học thực nghiệm chặt chẽ (nên gọi là tự phát).
+        \item Tiêu biểu là \textbf{Heraclitus} với tuyên ngôn nổi tiếng: ``Không ai có thể tắm hai lần trên cùng một dòng sông''. Ông chỉ ra sự đấu tranh giữa các mặt đối lập (như nóng và lạnh, sáng và tối) là nguồn gốc vận động của vạn vật: ``Đấu tranh là cha đẻ của vạn vật''.
+    \end{itemize}
+    \item \textit{Chứa đựng hầu hết các mầm mống thế giới quan sau này:}
+    \begin{itemize}
+        \item Hy Lạp cổ đại là nơi diễn ra cuộc đấu tranh quyết liệt giữa hai đường lối triết học lớn: \textbf{Đường lối Democritus} (Chủ nghĩa duy vật vô thần) và \textbf{Đường lối Plato} (Chủ nghĩa duy tâm khách quan, cho rằng thế giới vật chất chỉ là cái bóng phản chiếu của ``Thế giới Ý niệm'' hoàn mỹ bất biến).
+        \item Đây là tiền đề trực tiếp xác lập nên các trường phái triết học sau này ở phương Tây: Chủ nghĩa hoài nghi, Chủ nghĩa duy cảm, Khắc kỷ, Khoái lạc tông, Logic học Aristoteles.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Triết học Cổ điển Đức và các đại diện tiêu biểu}
+
+\begin{questionbox}{Câu 6: Triết học Cổ điển Đức}
+Trình bày điều kiện ra đời, cơ sở lý luận, các đại diện tiêu biểu của triết học cổ điển Đức; nội dung cơ bản của triết học cổ điển Đức: phép biện chứng duy tâm và chủ nghĩa duy vật siêu hình; lấy con người làm trung tâm, đề cao sức mạnh trí tuệ và hoạt động của con người.
+\end{questionbox}
+
+\noindent
+\textbf{1. Điều kiện ra đời và cơ sở lý luận của Triết học Cổ điển Đức:}
+\begin{itemize}
+    \item \textit{Bối cảnh kinh tế -- xã hội:} Ra đời vào cuối thế kỷ XVIII, đầu thế kỷ XIX. Khác với sự phát triển kinh tế mạnh mẽ ở Anh hay cuộc Cách mạng Pháp (1789) lẫy lừng về mặt chính trị, nước Đức lúc bấy giờ vẫn là một quốc gia phong kiến phân tán, lạc hậu về kinh tế. Giai cấp tư sản Đức còn yếu ớt về thế lực chính trị nhưng lại khao khát tự do, dân chủ. Do không thể tiến hành cách mạng xã hội trên thực tế, họ tiến hành một cuộc ``cách mạng tư tưởng'' trên giảng đường đại học thông qua triết học. Do đó, triết học cổ điển Đức mang tính trừu tượng, khái quát hóa và duy tâm sâu sắc.
+    \item \textit{Sự phát triển khoa học tự nhiên:} Sự ra đời của các phát kiến khoa học lớn (như thuyết vũ trụ của Kant-Laplace, sinh học tiến hóa sơ kỳ) đòi hỏi một phương pháp tư duy mới vượt lên trên phương pháp tư duy siêu hình chật hẹp của thế kỷ XVII -- XVIII.
+\end{itemize}
+
+\noindent
+\textbf{2. Các đại diện tiêu biểu và nội dung tư tưởng cơ bản:}
+\begin{itemize}
+    \item \textit{Immanuel Kant (Người mở đường):}
+    \begin{itemize}
+        \item Giai đoạn tiền phê phán: Ông đóng góp thuyết vũ trụ hình thành từ đám mây bụi tinh vân (thế giới quan duy vật biện chứng sơ khởi).
+        \item Giai đoạn phê phán: Đưa ra thuyết Hoài nghi học (Thuyết không thể biết -- Agnosticism). Ông phân chia thế giới thành hai phần: ``Vật tự thân'' (Ding an sich) tồn tại khách quan nhưng con người không thể nhận thức được bản chất đích thực của nó; và thế giới hiện tượng do các phạm trù tiên nghiệm của trí tuệ con người nhào nặn ra.
+    \end{itemize}
+    \item \textit{G.W.F. Hegel (Đỉnh cao của chủ nghĩa duy tâm khách quan):}
+    \begin{itemize}
+        \item \textbf{Phép biện chứng duy tâm:} Đóng góp vĩ đại nhất của Hegel là đã xây dựng hệ thống phép biện chứng toàn diện lần đầu tiên dưới dạng lý luận chặt chẽ. Ông coi sự vận động, phát triển là bản chất tự thân của vạn vật.
+        \item Tuy nhiên, biện chứng của ông là biện chứng duy tâm. Ông cho rằng khởi nguyên của vũ trụ là ``Ý niệm tuyệt đối'' (Idea tuyệt đối). Ý niệm tuyệt đối này tự vận động, tự phân đôi và tha hóa thành thế giới tự nhiên, rồi cuối cùng quay trở lại nhận thức chính mình trong triết học Hegel. Biện chứng thực tế chỉ là bản sao của biện chứng ý niệm.
+    \end{itemize}
+    \item \textit{Ludwig Feuerbach (Đỉnh cao của chủ nghĩa duy vật nhân bản bản xứ):}
+    \begin{itemize}
+        \item \textbf{Chủ nghĩa duy vật siêu hình:} Feuerbach đã phê phán kịch liệt chủ nghĩa duy tâm của Hegel, khẳng định tự nhiên tồn tại khách quan độc lập với ý thức. Không phải Thượng đế tạo ra con người mà chính con người do yếu đuối đã tự sáng tạo ra Thượng đế theo hình ảnh của mình.
+        \item Tuy nhiên, chủ nghĩa duy vật của ông mang tính siêu hình, trực quan và không triệt để. Khi giải thích các hiện tượng lịch sử -- xã hội, ông lại rơi vào duy tâm đạo đức (đề xướng tôn giáo tình yêu thương vạn năng để gắn kết con người).
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Tinh thần lấy con người làm trung tâm và đề cao hoạt động thực tiễn:}
+\begin{itemize}
+    \item Triết học cổ điển Đức đặt con người vào trung tâm của mọi suy tư triết học. Kant đề ra mệnh lệnh đạo đức tối cao tôn trọng nhân phẩm con người.
+    \item Đề cao tự do ý chí và vai trò năng động sáng tạo của chủ thể nhận thức. Con người không phải là sinh vật thụ động thụ hưởng kích thích từ môi trường mà là chủ thể tích cực nhào nặn thế giới, biến đổi hiện thực thông qua tư duy biện chứng và hoạt động tinh thần.
+\end{itemize}
+
+\newpage
+% ============ CHƯƠNG 2 ============
+\section{TRIẾT HỌC MÁC -- LÊNIN}
+
+\subsection{Nguyên lý về mối liên hệ phổ biến và nguyên lý về sự phát triển}
+
+\begin{questionbox}{Câu 7: Hai nguyên lý của phép biện chứng duy vật}
+Phân tích nguyên lý về mối liên hệ phổ biến và nguyên lý về sự phát triển (Khái niệm, tính chất và ý nghĩa phương pháp luận). Liên hệ thực tiễn bản thân trong học tập và nghiên cứu khoa học.
+\end{questionbox}
+
+\noindent
+\textbf{1. Nguyên lý về mối liên hệ phổ biến:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Mối liên hệ là phạm trù triết học dùng để chỉ sự ràng buộc, ràng buộc lẫn nhau, tác động qua lại, chuyển hóa lẫn nhau giữa các mặt, các yếu tố trong một sự vật, hiện tượng hoặc giữa các sự vật, hiện tượng với nhau.
+    \item \textit{Tính chất của mối liên hệ:}
+    \begin{itemize}
+        \item \textbf{Tính khách quan:} Mối liên hệ là cái vốn có của bản thân sự vật hiện tượng, tồn tại độc lập với ý chí của con người. Vật chất tự vận động và tương tác tạo nên các liên hệ tự thân.
+        \item \textbf{Tính phổ biến:} Mối liên hệ diễn ra ở mọi không gian, thời gian; ở mọi cấp độ cấu trúc (Tự nhiên, Xã hội và Tư duy). Không có bất kỳ sự vật nào tồn tại biệt lập tuyệt đối.
+        \item \textbf{Tính đa dạng, phong phú:} Có nhiều loại liên hệ khác nhau đóng vai trò khác nhau trong sự vận động của sự vật: liên hệ bên trong -- bên ngoài, liên hệ bản chất -- không bản chất, liên hệ chủ yếu -- thứ yếu, liên hệ trực tiếp -- gián tiếp.
+    \end{itemize}
+    \item \textit{Ý nghĩa phương pháp luận (Quan điểm toàn diện):}
+    \begin{itemize}
+        \item Khi xem xét sự vật, phải đặt nó trong chỉnh thể các mối liên hệ qua lại, tránh cái nhìn phiến diện, một chiều.
+        \item Phải biết phân loại, xác định rõ vị trí, vai trò của từng mối liên hệ (đặc biệt là liên hệ bản chất, liên hệ bên trong) để có giải pháp tác động phù hợp.
+        \item Đồng thời, phải tuân thủ \textbf{Quan điểm lịch sử -- cụ thể}: Xem xét sự vật trong không gian, thời gian và hoàn cảnh lịch sử cụ thể sinh ra nó.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{2. Nguyên lý về sự phát triển:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Phát triển là một quá trình vận động theo chiều hướng đi lên: từ thấp đến cao, từ đơn giản đến phức tạp, từ kém hoàn thiện đến hoàn thiện hơn. Khái niệm phát triển hẹp hơn khái niệm vận động (vận động bao gồm mọi sự thay đổi nói chung, kể cả đi xuống hay tuần hoàn).
+    \item \textit{Tính chất của sự phát triển:}
+    \begin{itemize}
+        \item \textbf{Tính khách quan:} Nguồn gốc của sự phát triển nằm ngay trong bản thân sự vật (đó là sự giải quyết mâu thuẫn nội tại), không phụ thuộc vào ý muốn chủ quan của con người.
+        \item \textbf{Tính phổ biến:} Phát triển diễn ra ở mọi lĩnh vực (Tự nhiên: tiến hóa sinh học; Xã hội: sự thay thế các hình thái kinh tế -- xã hội; Tư duy: sự tiến hóa của tri thức).
+        \item \textbf{Tính kế thừa:} Sự vật mới ra đời không phủ định sạch trơn sự vật cũ mà lọc bỏ, giữ lại những nhân tố tiến bộ, hợp quy luật của sự vật cũ để phát triển tiếp.
+        \item \textbf{Tính đa dạng, phong phú:} Quá trình phát triển không thẳng tắp mà quanh co, phức tạp, trải qua nhiều bước thăng trầm, khúc khuỷu theo hình xoáy ốc.
+    \end{itemize}
+    \item \textit{Ý nghĩa phương pháp luận (Quan điểm phát triển):}
+    \begin{itemize}
+        \item Khi nhìn nhận sự vật phải luôn thấy nó trong trạng thái vận động biến đổi, dự báo được xu hướng biến đổi trong tương lai.
+        \item Phải biết ủng hộ, bảo vệ cái mới, cái tiến bộ hợp quy luật dù ban đầu nó còn non yếu.
+        \item Tránh tư tưởng bảo thủ, định kiến, trì trệ, giáo điều.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Sáu cặp phạm trù cơ bản của phép biện chứng duy vật}
+
+\begin{questionbox}{Câu 8: Sáu cặp phạm trù biện chứng}
+Trình bày khái niệm, mối quan hệ biện chứng và ý nghĩa phương pháp luận của sáu cặp phạm trù cơ bản của phép biện chứng duy vật.
+\end{questionbox}
+
+\noindent
+\textbf{1. Cái riêng và Cái chung:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Cái riêng chỉ một sự vật, hiện tượng cụ thể. Cái chung chỉ những thuộc tính lặp lại ở nhiều cái riêng. Cái đơn nhất chỉ thuộc tính chỉ có ở một cái riêng cụ thể.
+    \item \textit{Mối quan hệ:} Cái chung chỉ tồn tại trong cái riêng, thông qua cái riêng mà biểu hiện sự tồn tại của mình. Cái riêng chỉ tồn tại trong mối quan hệ với cái chung. Cái riêng chứa đựng cái đơn nhất và cái chung. Cái chung và cái đơn nhất có thể chuyển hóa cho nhau trong quá trình phát triển (cái mới sơ khai dạng đơn nhất lớn dần thành cái chung; cái chung cũ lạc hậu thu nhỏ thành cái đơn nhất rồi biến mất).
+    \item \textit{Ý nghĩa:} Muốn tìm cái chung phải xuất phát từ những cái riêng cụ thể. Khi áp dụng cái chung phải cá biệt hóa cho phù hợp với đặc điểm từng cái riêng.
+\end{itemize}
+
+\noindent
+\textbf{2. Nguyên nhân và Kết quả:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Nguyên nhân là sự tác động lẫn nhau giữa các mặt trong một sự vật hoặc giữa các sự vật với nhau gây ra những biến đổi nhất định. Kết quả là những biến đổi xuất hiện do sự tác động đó.
+    \item \textit{Mối quan hệ:} Nguyên nhân sinh ra kết quả, luôn có trước kết quả. Một nguyên nhân có thể sinh ra nhiều kết quả; một kết quả có thể do nhiều nguyên nhân gây ra. Có sự tác động ngược trở lại của kết quả đối với nguyên nhân. Nguyên nhân và kết quả có thể đổi chỗ cho nhau trong một chuỗi nhân quả vô tận.
+    \item \textit{Ý nghĩa:} Muốn loại bỏ kết quả xấu phải triệt tiêu nguyên nhân sinh ra nó. Phải biết phân loại nguyên nhân (chủ yếu, thứ yếu, bên trong, bên ngoài) để có cách xử lý tối ưu.
+\end{itemize}
+
+\noindent
+\textbf{3. Tất nhiên và Ngẫu nhiên:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Tất nhiên chỉ cái do những nguyên nhân cơ bản, bên trong quyết định và nhất định phải xảy ra như thế. Ngẫu nhiên chỉ cái do những nguyên nhân bên ngoài, sự gặp nhau của các hoàn cảnh bên ngoài quyết định, có thể xảy ra hoặc không xảy ra.
+    \item \textit{Mối quan hệ:} Tất nhiên và ngẫu nhiên đều tồn tại khách quan. Tất nhiên vạch đường đi cho mình thông qua vô số cái ngẫu nhiên. Ngẫu nhiên là hình thức biểu hiện của tất nhiên, bổ sung cho tất nhiên. Chúng có thể chuyển hóa cho nhau khi điều kiện thay đổi.
+    \item \textit{Ý nghĩa:} Trong hoạt động thực tiễn, phải dựa vào cái tất nhiên chứ không thể dựa vào cái ngẫu nhiên (may rủi). Tuy nhiên, không được bỏ qua cái ngẫu nhiên mà phải có phương án phòng ngừa bất trắc.
+\end{itemize}
+
+\noindent
+\textbf{4. Nội dung và Hình thức:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Nội dung là tổng hợp tất cả các mặt, yếu tố, quá trình tạo nên sự vật. Hình thức là phương thức tồn tại và phát triển của sự vật, là hệ thống các mối liên hệ tương đối bền vững giữa các yếu tố của nội dung.
+    \item \textit{Mối quan hệ:} Nội dung quyết định hình thức, hình thức phải phù hợp với nội dung. Hình thức có tính độc lập tương đối và tác động mạnh mẽ trở lại nội dung (thúc đẩy nếu phù hợp, kìm hãm nếu không phù hợp). Một nội dung có thể biểu hiện qua nhiều hình thức và ngược lại.
+    \item \textit{Ý nghĩa:} Tránh bệnh hình thức chủ nghĩa. Khi nội dung thay đổi, phải chủ động thay đổi hình thức tương ứng để giải phóng nội dung.
+\end{itemize}
+
+\noindent
+\textbf{5. Bản chất và Hiện tượng:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Bản chất là tổng hợp tất cả những mặt, những mối liên hệ tất nhiên, tương đối ổn định bên trong sự vật, quyết định sự vận động và phát triển của sự vật. Hiện tượng là sự biểu hiện ra bên ngoài của bản chất đó.
+    \item \textit{Mối quan hệ:} Bản chất và hiện tượng thống nhất biện chứng. Bản chất luôn bộc lộ qua hiện tượng; hiện tượng nào cũng là biểu hiện của bản chất. Tuy nhiên, bản chất sâu sắc hơn hiện tượng; hiện tượng phong phú, thường xuyên biến đổi hơn bản chất. Hiện tượng có thể xuyên tạc bản chất (hiện tượng giả tạo).
+    \item \textit{Ý nghĩa:} Nhận thức không dừng lại ở hiện tượng bề ngoài mà phải đi sâu tìm hiểu bản chất. Tránh đánh giá sự vật chỉ qua vẻ bề ngoài.
+\end{itemize}
+
+\noindent
+\textbf{6. Khả năng và Hiện thực:}
+\begin{itemize}
+    \item \textit{Khái niệm:} Khả năng chỉ cái chưa có, chưa tới nhưng sẽ xuất hiện khi có đủ điều kiện phù hợp. Hiện thực là cái đang tồn tại trên thực tế.
+    \item \textit{Mối quan hệ:} Khả năng và hiện thực tồn tại trong mối liên hệ chặt chẽ, không tách rời nhau. Hiện thực chứa đựng các khả năng; khả năng biến đổi thành hiện thực trong quá trình vận động. Sự chuyển hóa này đòi hỏi phải có cả điều kiện khách quan lẫn nhân tố chủ quan (trong xã hội).
+    \item \textit{Ý nghĩa:} Hoạt động thực tiễn phải xuất phát từ hiện thực chứ không phải từ khả năng. Phải phát hiện sớm các khả năng tốt để chủ động tạo điều kiện cho nó biến thành hiện thực.
+\end{itemize}
+
+\subsection{Ba quy luật cơ bản của phép biện chứng duy vật}
+
+\begin{questionbox}{Câu 9: Ba quy luật biện chứng}
+Phân tích ba quy luật cơ bản của phép biện chứng duy vật (Quy luật Lượng - Chất; Quy luật Mâu thuẫn; Quy luật Phủ định của phủ định). Chỉ ra vai trò của từng quy luật đối với sự phát triển.
+\end{questionbox}
+
+\noindent
+\textbf{1. Quy luật chuyển hóa từ những thay đổi về lượng dẫn đến những thay đổi về chất và ngược lại (Quy luật Lượng -- Chất):}
+\begin{itemize}
+    \item \textit{Vai trò:} Chỉ ra \textbf{Cách thức, phương thức} của sự vận động và phát triển.
+    \item \textit{Nội dung khái niệm:}
+    \begin{itemize}
+        \item \textbf{Chất:} Tính quy định khách quan vốn có của sự vật, là sự thống nhất hữu cơ giữa các thuộc tính làm cho sự vật là nó chứ không phải cái khác.
+        \item \textbf{Lượng:} Tính quy định vốn có của sự vật về mặt quy mô, tốc độ, số lượng, đại lượng đo lường cụ thể.
+        \item \textbf{Độ (Measure):} Khoảng giới hạn mà trong đó sự thay đổi về lượng chưa làm thay đổi căn bản về chất của sự vật.
+        \item \textbf{Điểm nút (Node):} Điểm giới hạn mà tại đó sự thay đổi về lượng vượt quá giới hạn độ, dẫn đến sự thay đổi về chất ngay lập tức.
+        \item \textbf{Bước nhảy (Leap):} Sự thay đổi căn bản về chất của sự vật do tích lũy về lượng trước đó tạo ra.
+    \end{itemize}
+    \item \textit{Cơ chế hoạt động:} Lượng biến đổi dần dần tích lũy đến điểm nút, vượt quá giới hạn độ sẽ xảy ra bước nhảy phá vỡ chất cũ, thiết lập chất mới. Sau khi chất mới ra đời, nó sẽ tác động trở lại lượng mới, làm thay đổi quy mô, kết cấu, tốc độ biến đổi của lượng.
+    \item \textit{Ý nghĩa:} Tránh tư tưởng tả khuynh (nóng vội tiến hành bước nhảy khi chưa tích lũy đủ lượng) và hữu khuynh (bảo thủ, trì trệ, không dám thực hiện bước nhảy khi lượng đã chín muồi).
+\end{itemize}
+
+\noindent
+\textbf{2. Quy luật thống nhất và đấu tranh giữa các mặt đối lập (Quy luật Mâu thuẫn):}
+\begin{itemize}
+    \item \textit{Vai trò:} Hạt nhân của phép biện chứng, chỉ ra \textbf{Nguồn gốc, động lực} bên trong của mọi sự vận động và phát triển.
+    \item \textit{Nội dung khái niệm:}
+    \begin{itemize}
+        \item \textbf{Mặt đối lập:} Những mặt, thuộc tính có khuynh hướng biến đổi trái ngược nhau, bài trừ nhau trong cùng một sự vật.
+        \item \textbf{Mâu thuẫn biện chứng:} Sự thống nhất và đấu tranh giữa các mặt đối lập đó.
+        \item \textbf{Thống nhất giữa các mặt đối lập:} Sự liên hệ, ràng buộc, làm tiền đề tồn tại cho nhau (mặt này lấy mặt kia làm điều kiện tồn tại). Sự thống nhất mang tính tương đối, tạm thời.
+        \item \textbf{Đấu tranh giữa các mặt đối lập:} Sự bài trừ, phủ định lẫn nhau của các mặt đối lập. Đấu tranh mang tính tuyệt đối, vĩnh viễn.
+    \end{itemize}
+    \item \textit{Cơ chế hoạt động:} Sự đấu tranh giữa các mặt đối lập ngày càng gay gắt dẫn đến mâu thuẫn được giải quyết, làm cho sự vật cũ mất đi, sự vật mới ra đời.
+    \item \textit{Ý nghĩa:} Phải dũng cảm đối mặt với mâu thuẫn, phát hiện mâu thuẫn để giải quyết kịp thời bằng các con đường đấu tranh biện chứng phù hợp, tuyệt đối không được điều hòa mâu thuẫn một cách khiên cưỡng.
+\end{itemize}
+
+\noindent
+\textbf{3. Quy luật phủ định của phủ định:}
+\begin{itemize}
+    \item \textit{Vai trò:} Chỉ ra \textbf{Khuynh hướng, con đường} phát triển của sự vật hiện tượng.
+    \item \textit{Nội dung khái niệm:}
+    \begin{itemize}
+        \item \textbf{Phủ định biện chứng:} Sự phủ định tự thân, là kết quả giải quyết mâu thuẫn bên trong sự vật. Mang hai đặc trưng cốt lõi: tính khách quan và tính kế thừa (lọc bỏ cái cũ lạc hậu, giữ lại cái tốt đẹp cho cái mới).
+        \item \textbf{Chu kỳ phủ định của phủ định:} Trải qua ít nhất hai lần phủ định biện chứng (từ Khẳng định $\rightarrow$ Phủ định lần 1 $\rightarrow$ Phủ định lần 2 -- phủ định của phủ định). Sự vật mới dường như lặp lại một số đặc điểm của sự vật ban đầu nhưng trên cơ sở cao hơn, hoàn thiện hơn.
+    \end{itemize}
+    \item \textit{Hình ảnh phát triển:} Đường xoắn ốc (Spiral progression) đi lên, thể hiện tính quanh co, phức tạp chứ không phải đường thẳng.
+    \item \textit{Ý nghĩa:} Phải có tinh thần lạc quan cách mạng, tin tưởng vào thắng lợi cuối cùng của cái mới. Tránh tư tưởng bi quan thất vọng khi gặp khó khăn, thụt lùi tạm thời.
+\end{itemize}
+
+\subsection{Mối quan hệ biện chứng giữa Lực lượng sản xuất và Quan hệ sản xuất}
+
+\begin{questionbox}{Câu 10: Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất}
+Phân tích mối quan hệ biện chứng giữa lực lượng sản xuất và quan hệ sản xuất. Sự vận dụng quy luật này trong công cuộc đổi mới ở Việt Nam hiện nay.
+\end{questionbox}
+
+\noindent
+\textbf{1. Khái niệm cốt lõi:}
+\begin{itemize}
+    \item \textbf{Lực lượng sản xuất (LLSX):} Biểu thị mối quan hệ giữa con người với tự nhiên trong quá trình sản xuất. LLSX gồm hai yếu tố: Người lao động (kinh nghiệm, kỹ năng, trí tuệ -- nhân tố quyết định nhất) và Tư liệu sản xuất (trong đó công cụ lao động là nhân tố động nhất, cách mạng nhất, thước đo trình độ chinh phục tự nhiên của con người).
+    \item \textbf{Quan hệ sản xuất (QHSX):} Biểu thị mối quan hệ giữa con người với con người trong quá trình sản xuất. QHSX cấu thành từ ba mặt: Sở hữu đối với tư liệu sản xuất (mặt quyết định nhất), Tổ chức quản lý lao động, và Phân phối sản phẩm làm ra.
+\end{itemize}
+
+\noindent
+\textbf{2. Mối quan hệ biện chứng:}
+\begin{itemize}
+    \item \textit{LLSX quyết định QHSX:} LLSX là nội dung vật chất, luôn biến đổi không ngừng do nhu cầu cải tiến công cụ lao động nâng cao năng suất của con người. Khi LLSX thay đổi đến một trình độ nhất định, QHSX cũ (hình thức xã hội) vốn dĩ bảo thủ sẽ trở nên lỗi thời, kìm hãm sự phát triển của LLSX. Lúc này, việc thay thế QHSX cũ bằng QHSX mới phù hợp với trình độ mới của LLSX là một tất yếu khách quan.
+    \item \textit{QHSX tác động trở lại LLSX:}
+    \begin{itemize}
+        \item Nếu QHSX phù hợp với trình độ phát triển của LLSX, nó sẽ mở đường, tạo động lực mạnh mẽ thúc đẩy LLSX phát triển vượt bậc.
+        \item Nếu QHSX không phù hợp (lạc hậu hơn hoặc đi trước một cách duy ý chí so với trình độ thực tế của LLSX), nó sẽ trở thành xiềng xích kìm hãm, kéo lùi sự phát triển của LLSX.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Sự vận dụng quy luật này ở Việt Nam:}
+\begin{itemize}
+    \item \textit{Bài học trước năm 1986 (Thời kỳ bao cấp):} Việt Nam đã mắc phải sai lầm chủ quan, nóng vội, đẩy QHSX lên quá cao một cách duy ý chí (tập trung tối đa vào sở hữu toàn dân và tập thể thông qua hợp tác xã quy mô lớn, triệt tiêu kinh tế tư nhân) trong khi LLSX lúc đó còn rất thấp kém (nông nghiệp thủ công thô sơ). Kết quả là kìm hãm năng lực sản xuất tự do, đẩy nền kinh tế vào khủng hoảng trầm trọng.
+    \item \textit{Từ Đại hội VI (1986) đến nay (Thời kỳ Đổi mới):} Đảng và Nhà nước vận dụng đúng đắn quy luật này bằng cách:
+    \begin{itemize}
+        \item Xây dựng nền \textbf{Kinh tế thị trường định hướng xã hội chủ nghĩa} với nhiều hình thức sở hữu, nhiều thành phần kinh tế (kinh tế nhà nước, kinh tế tập thể, kinh tế tư nhân, kinh tế có vốn đầu tư nước ngoài).
+        \item Đa dạng hóa các hình thức phân phối (phân phối theo lao động, theo hiệu quả kinh tế, góp vốn).
+        \item Từng bước hiện đại hóa LLSX thông qua đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước và chủ động hội nhập quốc tế sâu rộng.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Mối quan hệ biện chứng giữa Cơ sở hạ tầng và Kiến trúc thượng tầng}
+
+\begin{questionbox}{Câu 11: Cơ sở hạ tầng và Kiến trúc thượng tầng}
+Trình bày khái niệm, mối quan hệ biện chứng giữa cơ sở hạ tầng và kiến trúc thượng tầng. Liên hệ thực tiễn việc xây dựng hệ thống chính trị và phát triển kinh tế ở nước ta hiện nay.
+\end{questionbox}
+
+\noindent
+\textbf{1. Khái niệm cốt lõi:}
+\begin{itemize}
+    \item \textbf{Cơ sở hạ tầng (CSHT):} Là toàn bộ những quan hệ sản xuất hợp thành cơ cấu kinh tế của một xã hội nhất định (gồm QHSX tàn dư, QHSX thống trị và QHSX mầm mống; trong đó QHSX thống trị giữ vai trò chủ đạo, định hình tính chất của CSHT).
+    \item \textbf{Kiến trúc thượng tầng (KTTT):} Là toàn bộ những quan điểm, tư tưởng xã hội (chính trị, pháp quyền, triết học, đạo đức, tôn giáo...) cùng với những thiết chế tương ứng (nhà nước, đảng phái, giáo hội...) được hình thành trên một cơ sở hạ tầng nhất định. Trong KTTT của xã hội có giai cấp, thiết chế Nhà nước là yếu tố mạnh mẽ nhất, có quyền lực tối cao để điều phối toàn bộ xã hội.
+\end{itemize}
+
+\noindent
+\textbf{2. Mối quan hệ biện chứng:}
+\begin{itemize}
+    \item \textit{CSHT quyết định KTTT:} CSHT nào thì sinh ra KTTT ấy. Giai cấp nào thống trị về mặt kinh tế thì cũng chiếm ưu thế thống trị về mặt tư tưởng chính trị và đời sống tinh thần. Khi CSHT thay đổi (đặc biệt là quan hệ kinh tế cốt lõi) thì toàn bộ KTTT đồ sộ cũng biến đổi theo sớm hay muộn.
+    \item \textit{KTTT tác động trở lại CSHT:} KTTT không thụ động mà bảo vệ CSHT sinh ra nó. Nhà nước dùng luật pháp và bạo lực để duy trì trật tự kinh tế có lợi cho giai cấp thống trị.
+    \begin{itemize}
+        \item Nếu KTTT tác động cùng chiều với quy luật kinh tế khách quan, nó sẽ thúc đẩy kinh tế phát triển nhanh chóng.
+        \item Nếu KTTT tác động ngược chiều (do duy ý chí chính trị, luật pháp bảo thủ cố chấp), nó sẽ cản trở, bóp nghẹt sự phát triển kinh tế của CSHT.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Vận dụng thực tiễn ở Việt Nam hiện nay:}
+\begin{itemize}
+    \item \textit{Xây dựng kinh tế làm nhiệm vụ trung tâm:} Thừa nhận CSHT nước ta hiện nay là nền kinh tế đa thành phần, định hướng XHCN. Sự phát triển kinh tế đa dạng này đòi hỏi KTTT phải thay đổi tương ứng.
+    \item \textit{Đổi mới hệ thống chính trị:} Nhà nước thực hiện tinh gọn bộ máy, xây dựng Nhà nước pháp quyền XHCN vững mạnh, đổi mới phương thức lãnh đạo của Đảng Cộng sản, đẩy mạnh cải cách hành chính và tư pháp nhằm tạo ra một hành lang pháp lý thông thoáng, lành mạnh để giải phóng sức sản xuất kinh tế, phục vụ nhân dân hiệu quả nhất.
+\end{itemize}
+
+\subsection{Mối quan hệ biện chứng giữa Tồn tại xã hội và Ý thức xã hội}
+
+\begin{questionbox}{Câu 12: Tồn tại xã hội và Ý thức xã hội}
+Phân tích mối quan hệ biện chứng giữa tồn tại xã hội và ý thức xã hội. Tính độc lập tương đối của ý thức xã hội và ý nghĩa thực tiễn của nó trong xây dựng văn hóa mới tại Việt Nam.
+\end{questionbox}
+
+\noindent
+\textbf{1. Khái niệm cốt lõi:}
+\begin{itemize}
+    \item \textbf{Tồn tại xã hội (TTXH):} Là sinh hoạt vật chất và những điều kiện sinh hoạt vật chất của xã hội. TTXH gồm ba yếu tố cơ bản: Phương thức sản xuất vật chất (yếu tố quyết định nhất), Điều kiện tự nhiên -- địa lý, và Mật độ dân số.
+    \item \textbf{Ý thức xã hội (YTXH):} Là đời sống tinh thần của xã hội, bao gồm những quan điểm, tư tưởng, tình cảm, tập quán phản ánh TTXH trong những giai đoạn lịch sử nhất định. YTXH được phân chia thành: Ý thức thông thường vs Ý thức lý luận; Tâm lý xã hội vs Hệ tư tưởng.
+\end{itemize}
+
+\noindent
+\textbf{2. Mối quan hệ biện chứng:}
+\begin{itemize}
+    \item \textit{TTXH quyết định YTXH:} Đời sống vật chất quyết định đời sống tinh thần. TTXH thế nào thì sinh ra YTXH thế ấy: ``Không phải ý thức của con người quyết định tồn tại của họ; trái lại, tồn tại xã hội của họ quyết định ý thức của họ'' (K. Marx). Khi TTXH thay đổi thì các quan điểm tư tưởng tinh thần cũng thay đổi theo.
+    \item \textit{Tính độc lập tương đối của YTXH (Cực kỳ quan trọng):} YTXH không hoàn toàn lệ thuộc máy móc vào TTXH mà có đời sống riêng biệt:
+    \begin{itemize}
+        \item \textbf{YTXH thường lạc hậu hơn TTXH:} Do thói quen, truyền thống, tâm lý xã hội cũ bám rễ sâu sắc trong nhân dân, hoặc do giai cấp phản tiến bộ cố tình lưu giữ các tư tưởng cũ để bảo vệ lợi ích của mình.
+        \item \textbf{YTXH có thể vượt trước TTXH:} Các tư tưởng khoa học, triết học tiến bộ có khả năng dự báo tương lai, vạch đường cho sự phát triển của TTXH.
+        \item \textbf{Tính kế thừa trong phát triển YTXH:} Các tư tưởng thời đại mới luôn kế thừa các giá trị tinh thần từ các thời đại lịch sử trước đó chứ không tự dưng sinh ra.
+        \item \textbf{Sự tác động qua lại giữa các hình thái YTXH:} Ý thức chính trị, pháp quyền, đạo đức, triết học, tôn giáo luôn ảnh hưởng, chi phối lẫn nhau.
+        \item \textbf{YTXH tác động trở lại TTXH:} Đây là biểu hiện cao nhất của tính năng động. Tư tưởng tiến bộ khoa học thúc đẩy sản xuất vật chất phát triển; ngược lại, tư tưởng lạc hậu, mê tín dị đoan sẽ kìm hãm sản xuất vật chất.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Vận dụng thực tiễn trong xây dựng văn hóa mới tại Việt Nam:}
+\begin{itemize}
+    \item Trong công cuộc đổi mới kinh tế (TTXH thay đổi), Đảng ta chủ trương xây dựng nền văn hóa Việt Nam tiên tiến, đậm đà bản sắc dân tộc (KTTT/YTXH).
+    \item Tích cực loại bỏ các hủ tục lạc hậu, tư tưởng lười lao động, ỷ lại thời bao cấp (giải quyết tính lạc hậu của YTXH).
+    \item Phát huy nhân tố con người, coi giáo dục, khoa học và công nghệ là quốc sách hàng đầu để định hướng, dẫn đường phát triển kinh tế đất nước.
+\end{itemize}
+
+\newpage
+% ============ CHƯƠNG 3 ============
+\section{MỐI QUAN HỆ GIỮA TRIẾT HỌC VÀ CÁC KHOA HỌC}
+
+\subsection{Thế giới quan và vai trò của nó đối với con người}
+
+\begin{questionbox}{Câu 13: Thế giới quan và cấu trúc}
+Trình bày khái niệm, cấu trúc, nội dung, vai trò của thế giới quan và các loại hình thế giới quan khác nhau. Sự hình thành và ưu thế của thế giới quan duy vật biện chứng.
+\end{questionbox}
+
+\noindent
+\textbf{1. Khái niệm và cấu trúc của Thế giới quan (Worldview):}
+\begin{itemize}
+    \item \textit{Khái niệm:} Thế giới quan là hệ thống các quan điểm, quan niệm của con người về thế giới, về bản thân con người và về vị trí, vai trò của con người trong thế giới đó.
+    \item \textit{Cấu trúc:}
+    \begin{itemize}
+        \item \textbf{Tri thức (Knowledge):} Cơ sở, chất liệu hình thành thế giới quan. Tri thức càng rộng, khoa học thì thế giới quan càng vững chắc.
+        \item \textbf{Niềm tin (Belief):} Sự kiểm chứng tri thức qua thực tiễn, biến tri thức thành động lực định hướng hành động. Tri thức phải biến thành niềm tin thì mới thực sự gia nhập cấu trúc thế giới quan.
+        \item \textbf{Lý tưởng (Ideal):} Mục tiêu vươn tới cao đẹp của con người dựa trên niềm tin sâu sắc. Lý tưởng là đỉnh cao điều hướng hành vi nhân sinh.
+    \end{itemize}
+    \item \textit{Vai trò:} Thế giới quan đóng vai trò như chiếc ``kính lăng kính'' định hướng toàn bộ hoạt động sống của con người, giúp con người xác định mục đích sống, lẽ sống và lựa chọn cách ứng xử trước các tình huống thực tiễn.
+\end{itemize}
+
+\noindent
+\textbf{2. Các loại hình thế giới quan trong lịch sử:}
+\begin{itemize}
+    \item \textit{Thế giới quan Huyền thoại (Thần thoại):} Xuất hiện ở xã hội mông muội sơ khai. Đặc trưng bởi sự hòa lẫn giữa tri thức và tưởng tượng hoang đường, nhân hóa các lực lượng tự nhiên thành các vị thần (thần mưa, thần sấm).
+    \item \textit{Thế giới quan Tôn giáo:} Đặc trưng bởi niềm tin tuyệt đối vào thế giới siêu nhiên, thần thánh cai quản cuộc sống con người. Tách biệt thế giới trần tục khổ đau khỏi thế giới thiên đàng hoàn mỹ sau cái chết.
+    \item \textit{Thế giới quan Triết học:} Khác với huyền thoại và tôn giáo, thế giới quan triết học giải thích thế giới bằng hệ thống lý luận chặt chẽ, các khái niệm, phạm trù logic, dựa trên tư duy phản tỉnh sắc bén của trí tuệ con người.
+\end{itemize}
+
+\noindent
+\textbf{3. Thế giới quan Duy vật biện chứng (Đỉnh cao thế giới quan):}
+\begin{itemize}
+    \item Do K. Marx và F. Engels sáng lập, V.I. Lênin phát triển. Đây là sự thống nhất hữu cơ giữa chủ nghĩa duy vật triệt để và phép biện chứng khoa học.
+    \item \textit{Ưu thế vượt trội:} Giải thích thế giới một cách khách quan, khoa học nhất, dựa trên các phát kiến lớn của khoa học tự nhiên. Coi thế giới vật chất tự vận động theo các quy luật khách quan của nó, bác bỏ mọi sự can thiệp của thần thánh siêu nhiên. Đây là công cụ tư duy sắc bén giúp giai cấp vô sản và nhân dân lao động nhận thức đúng đắn và cải tạo thế giới hiệu quả.
+\end{itemize}
+
+\subsection{Phương pháp luận triết học và các hình thức cơ bản}
+
+\begin{questionbox}{Câu 14: Phương pháp luận biện chứng}
+Trình bày khái niệm, cấu trúc, nội dung, vai trò của các hình thức phương pháp luận khác nhau trong lịch sử. Phân tích ưu thế của phương pháp luận biện chứng duy vật.
+\end{questionbox}
+
+\noindent
+\textbf{1. Khái niệm và phân loại Phương pháp luận:}
+\begin{itemize}
+    \item \textit{Phương pháp:} Hệ thống các nguyên tắc, quy tắc điều khiển hoạt động nhận thức và thực tiễn để đạt mục tiêu đề ra.
+    \item \textit{Phương pháp luận:} Hệ thống các quan điểm, nguyên tắc chỉ đạo việc tìm kiếm, xây dựng, lựa chọn và áp dụng các phương pháp cụ thể trong nhận thức và thực tiễn.
+    \item \textit{Các cấp độ của phương pháp luận:}
+    \begin{itemize}
+        \item \textbf{Phương pháp luận ngành (cụ thể):} Áp dụng cho một ngành khoa học hẹp (như toán học, hóa học).
+        \item \textbf{Phương pháp luận chung:} Áp dụng cho một nhóm ngành (như khoa học tự nhiên, khoa học xã hội).
+        \item \textbf{Phương pháp luận chung nhất (Triết học):} Áp dụng cho mọi lĩnh vực nhận thức và hoạt động thực tiễn của con người.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{2. Hai hình thức phương pháp luận triết học lớn trong lịch sử:}
+\begin{itemize}
+    \item \textit{Phương pháp luận siêu hình (Metaphysical):}
+    \begin{itemize}
+        \item Xem xét sự vật hiện tượng trong trạng thái biệt lập, tĩnh lặng, không vận động, không phát triển hoặc chỉ thay đổi thuần túy về số lượng bên ngoài chứ không có sự biến đổi về chất.
+        \item Phương pháp này giống như việc chụp một bức ảnh tĩnh cắt rời thực tế. Chỉ thấy cây mà không thấy rừng.
+    \end{itemize}
+    \item \textit{Phương pháp luận biện chứng (Dialectical):}
+    \begin{itemize}
+        \item Xem xét sự vật trong trạng thái luôn vận động, phát triển, nằm trong mối liên hệ ràng buộc qua lại, chuyển hóa lẫn nhau.
+        \item Thấy được nguồn gốc của sự biến đổi nằm ngay trong sự giải quyết các mâu thuẫn nội tại của bản thân sự vật. Thấy cả cây và thấy cả cánh rừng trong sự sinh trưởng sống động.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{3. Phương pháp luận Biện chứng duy vật (Đỉnh cao khoa học):}
+\begin{itemize}
+    \item Đóng vai trò là phương pháp luận chung nhất, khoa học nhất cho hoạt động nghiên cứu khoa học và thực tiễn. Nó trang bị cho con người các nguyên tắc chỉ đạo tư duy sắc bén như: nguyên tắc toàn diện, nguyên tắc phát triển, nguyên tắc lịch sử -- cụ thể. Giúp con người tránh được các sai lầm của tư duy giáo điều, phiến diện hoặc ngụy biện.
+\end{itemize}
+
+\subsection{Triết học là hạt nhân lý luận của thế giới quan}
+
+\begin{questionbox}{Câu 15: Triết học là hạt nhân lý luận của thế giới quan}
+Phân tích luận điểm: ``Triết học là hạt nhân lý luận của thế giới quan''. Làm rõ mối quan hệ giữa triết học với thế giới quan tôn giáo và thế giới quan khoa học.
+\end{questionbox}
+
+\noindent
+\textbf{1. Giải thích luận điểm ``Triết học là hạt nhân lý luận của thế giới quan'':}
+\begin{itemize}
+    \item Thế giới quan là một khái niệm rộng bao hàm nhiều yếu tố tình cảm, tri thức đời thường, niềm tin dân gian. Triết học không phải là toàn bộ thế giới quan mà là bộ phận cốt lõi, tinh túy nhất của thế giới quan.
+    \item Triết học diễn đạt thế giới quan bằng hệ thống lý luận chặt chẽ, bằng hệ thống các khái niệm, phạm trù, quy luật biện chứng khoa học. Triết học đóng vai trò định hướng, dẫn đường và nâng cao thế giới quan của con người từ cấp độ cảm tính, tự phát lên cấp độ lý tính, tự giác.
+\end{itemize}
+
+\noindent
+\textbf{2. Mối quan hệ giữa Triết học với các loại hình thế giới quan khác:}
+\begin{itemize}
+    \item \textit{Với thế giới quan tôn giáo:} Có sự khác biệt căn bản. Tôn giáo dựa trên đức tin thiêng liêng, phi lý tính và sự mặc khải thần thánh. Triết học (đặc biệt là triết học duy vật vô thần) dựa trên lý tính, tư duy khoa học biện chứng và kiểm chứng thực tiễn. Triết học vạch trần các ảo tưởng của thế giới quan tôn giáo, giúp con người tự giải phóng trí tuệ khỏi sự sợ hãi đấng siêu nhiên.
+    \item \textit{Với thế giới quan khoa học cụ thể:} Mối quan hệ tương hỗ chặt chẽ. Khoa học cụ thể cung cấp các số liệu thực chứng, các phát minh cụ thể làm chất liệu để triết học khái quát hóa thành thế giới quan. Ngược lại, triết học trang bị cho các nhà khoa học một thế giới quan đúng đắn để định hướng nghiên cứu, tránh rơi vào các cạm bẫy của chủ nghĩa duy tâm hay hoài nghi khoa học.
+\end{itemize}
+
+\subsection{Vai trò định hướng và giải thích của triết học đối với các khoa học cụ thể}
+
+\begin{questionbox}{Câu 16: Vai trò định hướng của triết học}
+Phân tích vai trò định hướng và giải thích của triết học đối với các khoa học cụ thể. Nêu ví dụ thực tế trong lĩnh vực công nghệ thông tin hoặc kỹ thuật.
+\end{questionbox}
+
+\noindent
+\textbf{1. Phân tích vai trò định hướng và giải thích:}
+\begin{itemize}
+    \item \textit{Vai trò giải thích:} Triết học không đi sâu vào giải quyết các công thức toán học hay phản ứng hóa học cụ thể. Triết học khái quát hóa các quy luật vận động chung nhất của vật chất để giải thích bản chất chung của thế giới mà các khoa học cụ thể đang nghiên cứu. Giúp các nhà khoa học hiểu rõ bản chất của không gian, thời gian, sự vận động của vật chất.
+    \item \textit{Vai trò định hướng:} Triết học cung cấp thế giới quan và phương pháp luận chung nhất cho các nhà khoa học. Nó định hướng cho nhà khoa học cách đặt câu hỏi nghiên cứu, lựa chọn phương pháp tiếp cận đối tượng một cách khách quan, biện chứng, tránh cái nhìn cô lập, siêu hình.
+\end{itemize}
+
+\noindent
+\textbf{2. Ví dụ thực tế trong lĩnh vực Kỹ thuật và Công nghệ Thông tin:}
+\begin{itemize}
+    \item \textbf{Thế giới quan duy vật biện chứng trong thiết kế hệ thống phần mềm phức tạp:} Khi xây dựng một hệ thống phần mềm lớn (như hệ thống ERP cho doanh nghiệp), nếu áp dụng phương pháp luận siêu hình, người kỹ sư sẽ coi các phòng ban là các module độc lập tuyệt đối. Kết quả hệ thống sẽ bị lỗi khi tích hợp dữ liệu. Áp dụng phương pháp luận biện chứng (nguyên lý mối liên hệ phổ biến và sự phát triển), người kỹ sư phải thiết kế hệ thống dưới dạng các service tương tác, chuyển hóa dữ liệu liên tục cho nhau (Microservices architecture), thích ứng linh hoạt với sự thay đổi của doanh nghiệp theo thời gian (Agile development). Điều này chứng minh tính đúng đắn tuyệt đối của tư duy biện chứng trong kỹ thuật.
+\end{itemize}
+
+\subsection{Vai trò của phương pháp luận triết học đối với hoạt động khoa học}
+
+\begin{questionbox}{Câu 17: Vai trò của phương pháp luận triết học đối với hoạt động khoa học}
+Khẳng định luận điểm: ``Nhà khoa học không thể thiếu phương pháp luận triết học sáng suốt dẫn đường -- đó là phương pháp luận của triết học Mác -- Lênin''. Phân tích và chứng minh.
+\end{questionbox}
+
+\noindent
+\textbf{1. Phân tích luận điểm:}
+\begin{itemize}
+    \item Hoạt động nghiên cứu khoa học đòi hỏi sự chính xác tuyệt đối và tư duy logic cao độ. Tuy nhiên, nếu thiếu một phương pháp luận triết học dẫn đường, nhà khoa học rất dễ bị lạc lối trong ``rừng'' số liệu thực chứng, rơi vào chủ nghĩa duy thực dụng, chủ nghĩa hoài nghi hoặc tệ hơn là rơi vào chủ nghĩa duy tâm thần bí khi gặp phải các hiện tượng chưa thể giải thích bằng công nghệ hiện thời.
+    \item Phương pháp luận Mác -- Lênin (Phép biện chứng duy vật) trang bị cho nhà khoa học nhãn quan thế giới quan duy vật vững chắc và phương pháp tư duy biện chứng sắc bén để giải quyết các vấn đề nan giải trong khoa học.
+\end{itemize}
+
+\noindent
+\textbf{2. Chứng minh qua lịch sử khoa học tự nhiên:}
+\begin{itemize}
+    \item Đầu thế giới XX, cuộc cách mạng trong vật lý học với sự phát hiện ra điện tử và thuyết tương đối của Einstein đã làm sụp đổ quan niệm siêu hình trước đó coi nguyên tử là hạt nhỏ nhất bất biến. Nhiều nhà vật lý lúc bấy giờ rơi vào khủng hoảng thế giới quan, tuyên bố ``vật chất đã tiêu tan mất''.
+    \item V.I. Lênin trong tác phẩm vĩ đại ``Chủ nghĩa duy vật và chủ nghĩa kinh nghiệm phê phán'' đã dùng phép biện chứng duy vật để chỉ rõ: Cái mất đi không phải là bản thân vật chất khách quan, mà chỉ là giới hạn hiểu biết cũ của con người về vật chất. Nguyên tử mất đi tính bất biến chứ vật chất không tiêu tan. Nhận định biện chứng thiên tài này đã mở đường cho vật lý học hiện đại tiếp tục tự tin tiến lên khám phá thế giới vi mô.
+\end{itemize}
+
+\newpage
+% ============ CHƯƠNG 4 ============
+\section{VAI TRÒ CỦA KHOA HỌC CÔNG NGHỆ TRONG SỰ PHÁT TRIỂN XÃ HỘI}
+
+\subsection{Sự khác biệt giữa cách mạng kỹ thuật, cách mạng công nghệ và cách mạng công nghiệp}
+
+\begin{questionbox}{Câu 18: Phân biệt các khái niệm cách mạng kỹ thuật, công nghệ và công nghiệp}
+Trình bày định nghĩa và sự khác biệt giữa ba khái niệm: cách mạng kỹ thuật, cách mạng công nghệ, và cách mạng công nghiệp. Mối quan hệ tác động qua lại giữa chúng.
+\end{questionbox}
+
+\noindent
+\textbf{1. Định nghĩa các khái niệm cốt lõi:}
+\begin{itemize}
+    \item \textbf{Cách mạng kỹ thuật (Technical Revolution):} Là bước nhảy vọt trong sự biến đổi của công cụ lao động và phương tiện kỹ thuật sản xuất. Chuyển đổi từ công cụ lao động thô sơ cầm tay sang máy móc tự động hóa, làm thay đổi sức mạnh cơ bắp của con người.
+    \item \textbf{Cách mạng công nghệ (Technological Revolution):} Là bước nhảy vọt trong việc biến đổi quy trình sản xuất, phương pháp chế biến, tổ chức dòng chảy nguyên liệu và thông tin trong sản xuất. Nó làm thay đổi cách thức con người kết hợp các yếu tố sản xuất vật chất.
+    \item \textbf{Cách mạng công nghiệp (Industrial Revolution):} Là sự biến đổi sâu sắc, toàn diện trong toàn bộ cấu trúc kinh tế -- xã hội của loài người, được khởi nguồn từ những bước nhảy vọt của cách mạng kỹ thuật và cách mạng công nghệ, làm thay đổi căn bản phương thức sản xuất của nhân loại (ví dụ chuyển từ xã hội nông nghiệp thủ công sang xã hội công nghiệp cơ khí hóa).
+\end{itemize}
+
+\noindent
+\textbf{2. Sự khác biệt và mối quan hệ biện chứng:}
+\begin{itemize}
+    \item \textit{Khác biệt:} Cách mạng kỹ thuật tập trung vào \textbf{công cụ vật chất} trực tiếp. Cách mạng công nghệ tập trung vào \textbf{phương pháp và quy trình} vận hành. Cách mạng công nghiệp là \textbf{kết quả tổng hợp xã hội} rộng lớn nhất, làm thay đổi cả cơ cấu kinh tế, giai cấp và bộ mặt đời sống nhân loại.
+    \item \textit{Mối quan hệ tác động:} Cách mạng kỹ thuật là tiền đề thúc đẩy cách mạng công nghệ phát triển (có máy móc mới thì mới xây dựng được quy trình công nghệ mới). Ngược lại, cách mạng công nghệ đặt ra yêu cầu đòi hỏi kỹ thuật phải cải tiến liên tục để đáp ứng quy trình. Khi cả hai cuộc cách mạng này tích lũy đủ lượng, chúng sẽ bùng nổ làm thay đổi phương thức sản xuất vật chất của xã hội, dẫn đến cuộc Cách mạng công nghiệp vĩ đại.
+\end{itemize}
+
+\subsection{Tiến trình phát triển khoa học công nghệ và bốn cuộc cách mạng công nghiệp}
+
+\begin{questionbox}{Câu 19: Bốn cuộc cách mạng công nghiệp trong lịch sử}
+Trình bày tiến trình phát triển của khoa học, kỹ thuật và công nghệ. Lập bảng so sánh đặc điểm, thành tựu chính và tác động xã hội của bốn cuộc cách mạng công nghiệp từ trước đến nay.
+\end{questionbox}
+
+\noindent
+\textbf{1. Bảng so sánh 4 cuộc cách mạng công nghiệp:}
+\begin{table}[H]
+\centering
+\fontsize{10}{12}\selectfont
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|c|l|X|X|}
+\hline
+\textbf{Cách mạng} & \textbf{Động cơ/Năng lượng} & \textbf{Thành tựu cốt lõi} & \textbf{Tác động xã hội} \\ \hline
+\textbf{CMCN 1.0} & Hơi nước, cơ khí hóa. & Động cơ hơi nước của James Watt, máy dệt cơ khí. & Hình thành giai cấp tư sản và vô sản; đô thị hóa phát triển mạnh mẽ. \\ \hline
+\textbf{CMCN 2.0} & Điện năng, động cơ đốt trong. & Dây chuyền sản xuất hàng loạt (Henry Ford), điện thoại, bóng đèn. & Chủ nghĩa tư bản chuyển sang độc quyền; nâng cao đời sống vật chất rõ rệt. \\ \hline
+\textbf{CMCN 3.0} & Điện tử, máy tính, Internet. & Vi mạch bán dẫn, máy tính cá nhân, mạng Internet toàn cầu. & Toàn cầu hóa kinh tế; chuyển dịch lao động sang ngành dịch vụ trí tuệ. \\ \hline
+\textbf{CMCN 4.0} & Số hóa, trí tuệ nhân tạo (AI). & AI, Big Data, IoT, Blockchain, Robot sinh học tự hành. & Xóa nhòa ranh giới giữa vật lý, sinh học và kỹ thuật số; kinh tế tri thức chiếm ưu thế. \\ \hline
+\end{tabularx}
+\caption{Bảng so sánh bốn cuộc cách mạng công nghiệp trong lịch sử}
+\end{table}
+
+\noindent
+\textbf{2. Ý nghĩa đối với tiến trình phát triển lịch sử nhân loại:}
+\begin{itemize}
+    \item Mỗi cuộc cách mạng công nghiệp là một bước nhảy vọt vĩ đại của Lực lượng sản xuất, làm thay đổi căn bản năng suất lao động xã hội, thúc đẩy các hình thái kinh tế -- xã hội thay thế nhau tuần tự theo hướng văn minh hơn.
+\end{itemize}
+
+\subsection{Bản chất, tác động và xu hướng của cách mạng khoa học công nghệ hiện nay}
+
+\begin{questionbox}{Câu 20: Bản chất và xu hướng cách mạng KH-CN hiện nay}
+Phân tích bản chất, tác động tích cực, hạn chế và các xu hướng phát triển cơ bản của cuộc cách mạng khoa học và công nghệ hiện đại đối với nhân loại.
+\end{questionbox}
+
+\noindent
+\textbf{1. Bản chất của cách mạng khoa học công nghệ hiện đại:}
+\begin{itemize}
+    \item Khoa học đã trở thành \textbf{Lực lượng sản xuất trực tiếp}. Trước đây, sản xuất thực tiễn đi trước rồi khoa học mới tổng kết. Ngày nay, nghiên cứu khoa học đi trước mở đường, trực tiếp sinh ra các ngành công nghiệp công nghệ cao hoàn toàn mới (như công nghệ bán dẫn, công nghệ sinh học). Khoảng cách từ phát minh khoa học đến ứng dụng thực tiễn được rút ngắn tối đa.
+\end{itemize}
+
+\noindent
+\textbf{2. Tác động của cách mạng KH-CN hiện nay:}
+\begin{itemize}
+    \item \textit{Tác động tích cực:} Giải phóng sức lao động của con người một cách tối đa; tăng năng suất lao động xã hội lên gấp hàng trăm lần; nâng cao chất lượng cuộc sống con người (y học hiện đại, giao thông thông minh); rút ngắn khoảng cách địa lý toàn cầu qua mạng Internet.
+    \item \textit{Hạn chế, thách thức:} Nguy cơ ô nhiễm môi trường và biến đổi khí hậu nghiêm trọng; thất nghiệp cơ cấu do robot thay thế con người; nguy cơ mất an toàn thông tin, tội phạm mạng; vấn đề đạo đức học (nhân bản vô tính, kiểm soát hành vi con người bằng thuật toán AI).
+\end{itemize}
+
+\noindent
+\textbf{3. Các xu hướng phát triển cơ bản:}
+\begin{itemize}
+    \item \textbf{Xu hướng Số hóa (Digitalization):} Chuyển đổi mọi hoạt động thực tế lên môi trường số (Digital Twin).
+    \item \textbf{Xu hướng Trí tuệ hóa (Intelligentization):} Tích hợp trí tuệ nhân tạo (AI) vào mọi thiết bị kỹ thuật để tự động ra quyết định tối ưu.
+    \item \textbf{Xu hướng Xanh hóa (Greenization):} Phát triển công nghệ thân thiện với môi trường, năng lượng tái tạo hướng tới mục tiêu Net Zero toàn cầu.
+\end{itemize}
+
+\subsection{Thành tựu và hạn chế của khoa học công nghệ tại Việt Nam}
+
+\begin{questionbox}{Câu 21: Thực trạng khoa học công nghệ tại Việt Nam}
+Trình bày thành tựu và hạn chế của khoa học công nghệ Việt Nam gắn với một vài lĩnh vực cụ thể phù hợp chuyên ngành của học viên. Đề xuất giải pháp phát triển.
+\end{questionbox}
+
+\noindent
+\textbf{1. Thực trạng phát triển khoa học công nghệ Việt Nam:}
+\begin{itemize}
+    \item \textit{Về mặt thành tựu:}
+    \begin{itemize}
+        \item Hạ tầng viễn thông phát triển mạnh mẽ, phổ cập Internet và mạng 4G/5G đến khắp các vùng miền đất nước.
+        \item Ứng dụng công nghệ thông tin trong quản lý nhà nước (Chính phủ điện tử, Cổng dịch vụ công quốc gia) đạt nhiều kết quả tích cực, nâng cao tính minh bạch.
+        \item Trực tiếp ứng dụng các kỹ thuật tiên tiến trong nông nghiệp công nghệ cao, y dược học (sản xuất vắc-xin, phẫu thuật nội soi), và công nghiệp chế biến chế tạo.
+    \end{itemize}
+    \item \textit{Về mặt hạn chế:}
+    \begin{itemize}
+        \item Năng lực tự chủ nghiên cứu phát triển công nghệ lõi (như công nghệ chip bán dẫn, phần mềm lõi) còn rất yếu, chủ yếu phụ thuộc vào nhập khẩu từ nước ngoài.
+        \item Đầu tư cho khoa học công nghệ từ ngân sách nhà nước và doanh nghiệp còn thấp so với các nước trong khu vực.
+        \item Đội ngũ chuyên gia khoa học trình độ cao còn mỏng, hiện tượng chảy máu chất xám ra nước ngoài vẫn diễn ra nghiêm trọng.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{2. Đề xuất giải pháp phát triển đột phá:}
+\begin{itemize}
+    \item Đổi mới mạnh mẽ cơ chế quản lý tài chính trong nghiên cứu khoa học, chấp nhận rủi ro khoa học để khuyến khích tinh thần sáng tạo đột phá.
+    \item Có chính sách đãi ngộ đặc biệt về lương, môi trường làm việc để thu hút các nhà khoa học Việt kiều xuất sắc về cống hiến cho đất nước.
+    \item Khuyến khích khối doanh nghiệp tư nhân đầu tư thành lập các quỹ nghiên cứu phát triển công nghệ R\&D lớn (như mô hình của VinFast, Viettel).
+\end{itemize}
+
+\subsection{Nguyên nhân của những thành công và hạn chế trong phát triển khoa học công nghệ Việt Nam}
+
+\begin{questionbox}{Câu 22: Nguyên nhân của thực trạng KH-CN Việt Nam}
+Phân tích nguyên nhân khách quan và chủ quan của những thành công cũng như hạn chế trong quá trình phát triển khoa học, kỹ thuật và công nghệ ở Việt Nam thời gian qua.
+\end{questionbox}
+
+\noindent
+\textbf{1. Nguyên nhân của những thành công:}
+\begin{itemize}
+    \item \textit{Sự chỉ đạo đúng đắn của Đảng và Nhà nước:} Đảng luôn coi khoa học công nghệ là quốc sách hàng đầu, ban hành nhiều nghị quyết lớn để thúc đẩy phát triển kinh tế tri thức và chủ động tham gia cuộc Cách mạng công nghiệp lần thứ tư.
+    \item \textit{Tính nhạy bén và cần cù của con người Việt Nam:} Thế hệ trẻ Việt Nam có thế mạnh tự nhiên về các môn khoa học tự nhiên, toán học và lập trình, thích ứng nhanh nhạy với các công nghệ mới của thế giới.
+\end{itemize}
+
+\noindent
+\textbf{2. Nguyên nhân của những hạn chế:}
+\begin{itemize}
+    \item \textit{Nguyên nhân khách quan:} Việt Nam xuất phát điểm đi lên từ một nước nông nghiệp lạc hậu, chịu hậu quả nặng nề của chiến tranh kéo dài nhiều thập kỷ. Chúng ta bước vào kỷ nguyên công nghiệp muộn hơn thế giới hàng trăm năm.
+    \item \textit{Nguyên nhân chủ quan (Cốt lõi cần khắc phục):}
+    \begin{itemize}
+        \item Tư duy quản lý khoa học công nghệ còn mang nặng tính hành chính bao cấp, thủ tục rườm rà làm nản lòng các nhà nghiên cứu.
+        \item Chưa có sự gắn kết hữu cơ giữa các trường đại học (nơi nghiên cứu lý thuyết) với các doanh nghiệp (nơi ứng dụng thực tế sản xuất thương mại), dẫn đến các đề tài nghiên cứu xong bị đút ngăn kéo bỏ phí.
+        \item Hệ thống giáo dục đại học chưa chú trọng đúng mức vào rèn luyện tư duy phản biện, sáng tạo đột phá tự thân cho học viên.
+    \end{itemize}
+\end{itemize}
+
+\vfill
+\begin{center}
+{\fontsize{14}{17}\selectfont \color{bkblue} \textbf{--- KẾT THÚC TÀI LIỆU ÔN TẬP ---}} \\
+\vspace{0.3cm}
+{\fontsize{12}{15}\selectfont \textit{Chúc các anh/chị học viên ôn tập tốt và đạt điểm 10 tuyệt đối trong kỳ thi sắp tới!}}
+\end{center}
+
+\end{document}

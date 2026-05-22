@@ -20,23 +20,33 @@ jobs:
           echo "Triggered on $GITHUB_REF@${GITHUB_SHA}"
           ls -la || true
 
-      - name: Compile LaTeX (XeLaTeX)
+      - name: Compile Essay LaTeX (XeLaTeX)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
 
-      - name: Publish PDF to project root
+      - name: Compile Exam Prep LaTeX (XeLaTeX)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: de_on_triet_hoc.tex
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+
+      - name: Publish PDFs to project root
         run: |
           cp main.pdf AS5113_Nhom7_ChuNghiaKhacKi.pdf
+          cp de_on_triet_hoc.pdf De_On_Triet_Hoc_AS5113.pdf
           ls -la
 
-      - name: Upload artifact (PDF)
+      - name: Upload artifact (PDFs)
         uses: actions/upload-artifact@v4
         with:
-          name: as5113-triet-hoc-pdf
-          path: AS5113_Nhom7_ChuNghiaKhacKi.pdf
+          name: as5113-triet-hoc-pdfs
+          path: |
+            AS5113_Nhom7_ChuNghiaKhacKi.pdf
+            De_On_Triet_Hoc_AS5113.pdf
 
       - name: Upload logs (always)
         if: always()
@@ -49,6 +59,8 @@ jobs:
             main.toc
             main.lof
             main.lot
+            de_on_triet_hoc.log
+            de_on_triet_hoc.aux
 
   release:
     if: github.event_name == 'push'
@@ -112,13 +124,15 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: as5113-triet-hoc-pdf
+          name: as5113-triet-hoc-pdfs
           path: dist
       
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: AS5113 Nhom 7 - Chu Nghia Khac Ki (Build ${{ github.run_number }})
+          name: AS5113 Nhom 7 - Chu Nghia Khac Ki & De On Tap (Build ${{ github.run_number }})
           body_path: release_notes.md
-          files: dist/AS5113_Nhom7_ChuNghiaKhacKi.pdf
+          files: |
+            dist/AS5113_Nhom7_ChuNghiaKhacKi.pdf
+            dist/De_On_Triet_Hoc_AS5113.pdf
